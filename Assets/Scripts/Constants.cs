@@ -13,11 +13,16 @@ public class Constants
     /// <summary>
     /// Radius of the tunnel.
     /// </summary>
-    public static readonly float tunnelRadius = 1;
+    public static readonly float tunnelRadius = 2;
 
     /// <summary>
     /// Speed multiplier for objects.
     /// </summary>
     public static readonly float objectSpeedMultiplier = 10;
+
+    /// <summary>
+    /// How long it takes for an object to get from the spawner to the camera.
+    /// </summary>
+    public static readonly float timeBetweenSpawnerAndCamera = tunnelLength / objectSpeedMultiplier;
 
 }

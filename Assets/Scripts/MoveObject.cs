@@ -43,7 +43,7 @@ public class MoveObject : MonoBehaviour
     /// <summary>
     /// Set the direction for the game object to move in.
     /// </summary>
-    /// <param name="dir">Direction for the game object to move in.</param>
+    /// <param name="dir">Direction for the game object to move in. (Should be a normalized vector)</param>
     public void SetDirection (Vector3 dir) {
         direction = dir;
     }
