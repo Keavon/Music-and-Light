@@ -40,3 +40,8 @@ sysinfo.txt
 
 .DS_Store
 Logs/
+
+# Todo lists
+todo.txt
+done.txt
+report.txt
