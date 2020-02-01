@@ -309,6 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7601ee4ded1d29649a2be21c9d1d1d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationAmounts: []
+  timeToRotation: []
 --- !u!1 &1952602989
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +371,7 @@ MonoBehaviour:
   spawnableObjects:
   - {fileID: 6394123574665071919, guid: d4dc5db06170fdb47b483bc775e6efd0, type: 3}
   - {fileID: 2016445703759980150, guid: e4b152e8e7f9fc24ba5be1861b2ee9f0, type: 3}
-  objectToSpawn: 0
+  objectToSpawn: 1
 --- !u!114 &1952602993
 MonoBehaviour:
   m_ObjectHideFlags: 0
