@@ -33,13 +33,13 @@ public class MoveObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotateAround = gameObject.GetComponent<RotateAround> ();
-        if (rotateAround == null) {
-            gameObject.AddComponent<RotateAround> ();
-            rotateAround = gameObject.GetComponent<RotateAround> ();
-        }
+        // rotateAround = gameObject.GetComponent<RotateAround> ();
+        // if (rotateAround == null) {
+        //     gameObject.AddComponent<RotateAround> ();
+        //     rotateAround = gameObject.GetComponent<RotateAround> ();
+        // }
 
-        rotateAround.SetDirectionAndCenter (direction, center);
+        // rotateAround.SetDirectionAndCenter (direction, center);
     }
 
     // Update is called once per frame
@@ -50,7 +50,7 @@ public class MoveObject : MonoBehaviour
             totalDistanceMoved += distanceToMove;
             transform.position += direction * Constants.objectSpeedMultiplier * Time.deltaTime;
             center += direction * Constants.objectSpeedMultiplier * Time.deltaTime;
-            rotateAround.UpdateCenter (center);
+            // rotateAround.UpdateCenter (center);
         }
 
         if (totalDistanceMoved > Constants.tunnelLength * 1.1) {

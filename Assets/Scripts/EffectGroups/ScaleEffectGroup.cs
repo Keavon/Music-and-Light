@@ -9,6 +9,8 @@ public class ScaleEffectGroup : EffectGroup
     /// </summary>
     /// <param name="go">GameObject to effect.</param>
     public override void Effect(GameObject go) {
-        go.transform.localScale = new Vector3 (1, 1, 1) * (0.5f*Mathf.Sin (totalTime*2) + 1);
+        // go.transform.localScale = new Vector3 (1, 1, 1) * (0.5f*Mathf.Sin (totalTime*2) + 1);
+        float level = Lasp.MasterInput.GetPeakLevel(Lasp.FilterType.LowPass) * 5;
+        go.transform.localScale = new Vector3(1+level,1+level,1+level);
     }
 }

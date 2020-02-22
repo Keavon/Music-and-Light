@@ -47,6 +47,9 @@ public class SpawnObject : MonoBehaviour
     [SerializeField]
     private EffectGroup scaleEffectGroup;
 
+    [SerializeField]
+    private EffectGroup rotateEffectGroup;
+
     // ======================================
 
     // Start is called before the first frame update
@@ -63,10 +66,10 @@ public class SpawnObject : MonoBehaviour
             tempRotate += Time.deltaTime;
             return;
         }
-        Spawn (tempRotate, addToGroup == 1 ? scaleEffectGroup : null);
-        Spawn (tempRotate + Mathf.PI * 0.5f, addToGroup == 1 ? null : scaleEffectGroup);
-        Spawn (tempRotate + Mathf.PI, addToGroup == 1 ? scaleEffectGroup : null);
-        Spawn (tempRotate + Mathf.PI * 1.5f, addToGroup == 1 ? null : scaleEffectGroup);
+        Spawn (tempRotate, addToGroup == 1 ? scaleEffectGroup : rotateEffectGroup);
+        Spawn (tempRotate + Mathf.PI * 0.5f, addToGroup == 1 ? rotateEffectGroup : scaleEffectGroup);
+        Spawn (tempRotate + Mathf.PI, addToGroup == 1 ? scaleEffectGroup : rotateEffectGroup);
+        Spawn (tempRotate + Mathf.PI * 1.5f, addToGroup == 1 ? rotateEffectGroup : scaleEffectGroup);
         addToGroup *= -1;
         tempRotate += Time.deltaTime;
         tempTime = 0;
