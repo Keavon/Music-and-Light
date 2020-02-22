@@ -40,6 +40,7 @@ public class SyncRotationRecieve : MonoBehaviour
         }
     }
 
+
     public void AddRotation (float rotationAmount) {
         rotationAmounts.Add (rotationAmount);
         timeToRotation.Add (Constants.timeBetweenSpawnerAndCamera);
