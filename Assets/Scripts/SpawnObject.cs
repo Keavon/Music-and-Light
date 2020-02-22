@@ -23,7 +23,7 @@ public class SpawnObject : MonoBehaviour
     /// Radius of the tunnel.
     /// </summary>
     [SerializeField]
-    private float tunnelRadius = 2;
+    private float tunnelRadius = 1.05f;
 
     // =========== Temp Variables ===========
 
@@ -88,7 +88,7 @@ public class SpawnObject : MonoBehaviour
             mo = go.GetComponent<MoveObject> ();
         }
 
-        dir = -transform.position;
+        dir = transform.position;
         dir.Normalize ();
 
         mo.SetDirectionAndCenter (dir, transform.position);
@@ -105,8 +105,8 @@ public class SpawnObject : MonoBehaviour
     /// <param name="localPos">Coordinate relative to the gameobject</param>
     /// <returns>Corresponding point in world coordinates</returns>
     private Vector3 LocalPosToWorldPos (Vector3 localPos) {
-        Vector3 worldOffset = transform.rotation * localPos;
-        return transform.position + worldOffset;
+        Vector3 worldOffset = Camera.main.transform.rotation * localPos;
+        return Camera.main.transform.position + worldOffset;
     }
 
     /// <summary>
