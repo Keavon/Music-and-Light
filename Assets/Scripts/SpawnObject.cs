@@ -35,12 +35,17 @@ public class SpawnObject : MonoBehaviour
     /// <summary>
     /// Temp time delay between spawning objects.
     /// </summary>
-    private float tempTimeDelay = .2f;
+    private float tempTimeDelay = .5f;
 
     /// <summary>
     /// Temp time tracker
     /// </summary>
     private float tempTime = 0;
+
+    private int addToGroup = 1;
+
+    [SerializeField]
+    private EffectGroup scaleEffectGroup;
 
     // ======================================
 
@@ -58,10 +63,11 @@ public class SpawnObject : MonoBehaviour
             tempRotate += Time.deltaTime;
             return;
         }
-        Spawn (tempRotate);
-        Spawn (tempRotate + Mathf.PI);
-        Spawn (tempRotate + Mathf.PI * 0.5f);
-        Spawn (tempRotate + Mathf.PI * 1.5f);
+        Spawn (tempRotate, addToGroup == 1 ? scaleEffectGroup : null);
+        Spawn (tempRotate + Mathf.PI * 0.5f, addToGroup == 1 ? null : scaleEffectGroup);
+        Spawn (tempRotate + Mathf.PI, addToGroup == 1 ? scaleEffectGroup : null);
+        Spawn (tempRotate + Mathf.PI * 1.5f, addToGroup == 1 ? null : scaleEffectGroup);
+        addToGroup *= -1;
         tempRotate += Time.deltaTime;
         tempTime = 0;
     }
@@ -70,7 +76,8 @@ public class SpawnObject : MonoBehaviour
     /// Spawn the object from <see cref="spawnableObjects"/> at index <see cref="objectToSpawn"/> and set the direction for the object.
     /// </summary>
     /// <param name="angle">Angle around the circle to spawn the object at.</param>
-    public void Spawn (float angle) {
+    /// <param name="groupToAddTo">Group to add the spawned object to.</param>
+    public void Spawn (float angle, EffectGroup groupToAddTo = null) {
         GameObject go;
         MoveObject mo;
         Vector3 dir;
@@ -95,6 +102,10 @@ public class SpawnObject : MonoBehaviour
 
         if (go.GetComponent<Rotate> () == null) {
             go.AddComponent<Rotate> ();
+        }
+
+        if (groupToAddTo != null) {
+            groupToAddTo.AddObjectToGroup(go);
         }
 
     }
