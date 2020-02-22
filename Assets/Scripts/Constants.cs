@@ -11,11 +11,6 @@ public class Constants
     public static readonly float tunnelLength = 80;
 
     /// <summary>
-    /// Radius of the tunnel.
-    /// </summary>
-    public static readonly float tunnelRadius = 2;
-
-    /// <summary>
     /// Speed multiplier for objects.
     /// </summary>
     public static readonly float objectSpeedMultiplier = 10;
