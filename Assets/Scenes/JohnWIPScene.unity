@@ -371,7 +371,8 @@ MonoBehaviour:
   spawnableObjects:
   - {fileID: 6394123574665071919, guid: d4dc5db06170fdb47b483bc775e6efd0, type: 3}
   - {fileID: 2016445703759980150, guid: e4b152e8e7f9fc24ba5be1861b2ee9f0, type: 3}
-  objectToSpawn: 1
+  objectToSpawn: 0
+  tunnelRadius: 2
 --- !u!114 &1952602993
 MonoBehaviour:
   m_ObjectHideFlags: 0

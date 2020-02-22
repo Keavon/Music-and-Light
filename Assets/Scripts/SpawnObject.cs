@@ -19,6 +19,11 @@ public class SpawnObject : MonoBehaviour
     [SerializeField]
     private int objectToSpawn = 0;
 
+    /// <summary>
+    /// Radius of the tunnel.
+    /// </summary>
+    [SerializeField]
+    private float tunnelRadius = 2;
 
     // =========== Temp Variables ===========
 
@@ -76,18 +81,21 @@ public class SpawnObject : MonoBehaviour
         }
 
         go = GameObject.Instantiate (spawnableObjects [objectToSpawn], LocalPosToWorldPos (PositionOnCircle (angle)), transform.rotation);
-        mo = go.GetComponent<MoveObject> ();
 
+        mo = go.GetComponent<MoveObject> ();
         if (mo == null) {
-            Debug.LogWarning ("Missing 'MoveObject' script on spawned object - " + spawnableObjects [objectToSpawn]);
-            GameObject.Destroy (go);
-            return;
+            go.AddComponent<MoveObject> ();
+            mo = go.GetComponent<MoveObject> ();
         }
 
         dir = -transform.position;
         dir.Normalize ();
 
-        mo.SetDirection (dir);
+        mo.SetDirectionAndCenter (dir, transform.position);
+
+        if (go.GetComponent<Rotate> () == null) {
+            go.AddComponent<Rotate> ();
+        }
 
     }
 
@@ -116,7 +124,7 @@ public class SpawnObject : MonoBehaviour
     /// <param name="t">t parameter for the parametric equation</param>
     /// <returns>X coordinate.</returns>
     private float GetXCircle (float t) {
-        return Constants.tunnelRadius * Mathf.Cos (t);
+        return tunnelRadius * Mathf.Cos (t);
     }
 
     /// <summary>
@@ -125,7 +133,7 @@ public class SpawnObject : MonoBehaviour
     /// <param name="t">t parameter for the parametric equation</param>
     /// <returns>Y coordinate</returns>
     private float GetYCircle (float t) {
-        return Constants.tunnelRadius * Mathf.Sin (t);
+        return tunnelRadius * Mathf.Sin (t);
     }
 
 }
