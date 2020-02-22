@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95aed22b05183d5419bfdda57b71f73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wiringNodePosition: {x: 60, y: 40}
+  _wiringNodePosition: {x: 220, y: -40}
   _particleSystem: {fileID: 1896492408}
 --- !u!1 &624967571
 GameObject:
@@ -486,6 +486,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 561418701}
         m_MethodName: Emit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 561418701}
+        m_MethodName: set_rateOverTime
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
