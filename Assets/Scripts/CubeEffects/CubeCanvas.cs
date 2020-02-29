@@ -151,7 +151,7 @@ public class CubeCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// Edit the list of effects on a block.
+    /// Edit the list of effects on a block and update the effect groups.
     /// Any effect not already applied will be added.
     /// If an effect in effects is already applied, it will be removed.
     /// </summary>
@@ -159,28 +159,41 @@ public class CubeCanvas : MonoBehaviour
     /// <param name="rowPos">Where in the row the block is.</param>
     /// <param name="effects">What effects to add to/remove from the block.</param>
     public void EditEffectGroup (int row, int rowPos, List<EffectGroup> effects) {
+        foreach (EffectGroup eg in effects) {
+            if (groupDistribution[row][rowPos].Contains (eg)) {
+                eg.RemoveObjectFromGroup(cubes[row][rowPos]);
+            } else {
+                eg.AddObjectToGroup(cubes[row][rowPos]);
+            }
+        }
         //                                                      (effects - currentEffects)                    U          (currentEffects - effects)             remove duplicates
         groupDistribution[row][rowPos] = (List<EffectGroup>)(effects.Except(groupDistribution[row][rowPos]).Union(groupDistribution[row][rowPos].Except(effects))).Distinct();
     }
 
     /// <summary>
-    /// Add effects to the list of effects on a block.
+    /// Add effects to the list of effects on a block and update the effect groups.
     /// </summary>
     /// <param name="row">Row the block is in.</param>
     /// <param name="rowPos">Where in the row the block is.</param>
     /// <param name="effects">What effects to add to the block.</param>
     public void AddEffectGroup (int row, int rowPos, List<EffectGroup> effects) {
         groupDistribution[row][rowPos] = (List<EffectGroup>)(groupDistribution[row][rowPos].Union(effects).Distinct());
+        foreach (EffectGroup eg in effects) {
+            eg.AddObjectToGroup(cubes[row][rowPos]);
+        }
     }
 
     /// <summary>
-    /// Remove effects from the list of effects on a block.
+    /// Remove effects from the list of effects on a block and update the effect groups.
     /// </summary>
     /// <param name="row">Row the block is in.</param>
     /// <param name="rowPos">Where in hte row the block is.</param>
     /// <param name="effects">What effects to remove from the block.</param>
     public void RemoveEffectGroup (int row, int rowPos, List<EffectGroup> effects) {
         groupDistribution[row][rowPos] = (List<EffectGroup>)(groupDistribution[row][rowPos].Except(effects).Distinct());
+        foreach (EffectGroup eg in effects) {
+            eg.RemoveObjectFromGroup(cubes[row][rowPos]);
+        }
     }
 
     /// <summary>

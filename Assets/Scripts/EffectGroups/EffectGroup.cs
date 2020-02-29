@@ -44,7 +44,19 @@ public abstract class EffectGroup : MonoBehaviour
     /// <param name="go">GameObject to effect.</param>
     public abstract void Effect (GameObject go);
 
+    /// <summary>
+    /// Add an object to the effect group.
+    /// </summary>
+    /// <param name="go">Object to add.</param>
     public void AddObjectToGroup(GameObject go) {
         groupObjects.Add (go);
+    }
+
+    /// <summary>
+    /// Remove an object from the effect group.
+    /// </summary>
+    /// <param name="go">Object to remove.</param>
+    public void RemoveObjectFromGroup(GameObject go) {
+        groupObjects.Remove(go);
     }
 }
