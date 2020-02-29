@@ -49,7 +49,11 @@ public abstract class EffectGroup : MonoBehaviour
     /// </summary>
     /// <param name="go">Object to add.</param>
     public void AddObjectToGroup(GameObject go) {
-        groupObjects.Add (go);
+        if (go.transform.childCount > 0) {
+            groupObjects.Add (go.transform.GetChild(0).gameObject);
+        } else {
+            groupObjects.Add (go);
+        }
     }
 
     /// <summary>
@@ -57,6 +61,10 @@ public abstract class EffectGroup : MonoBehaviour
     /// </summary>
     /// <param name="go">Object to remove.</param>
     public void RemoveObjectFromGroup(GameObject go) {
-        groupObjects.Remove(go);
+        if (go.transform.childCount > 0) {
+            groupObjects.Remove(go.transform.GetChild(0).gameObject);
+        } else {
+            groupObjects.Remove(go);
+        }
     }
 }

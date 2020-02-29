@@ -371,13 +371,19 @@ PrefabInstance:
     - target: {fileID: 8784337007046657602, guid: 61ee19530868cbf4e84c18858a405dc1,
         type: 3}
       propertyPath: cubePercentage
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 8784337007046657602, guid: 61ee19530868cbf4e84c18858a405dc1,
         type: 3}
       propertyPath: cube
       value: 
       objectReference: {fileID: 6394123574665071919, guid: d4dc5db06170fdb47b483bc775e6efd0,
+        type: 3}
+    - target: {fileID: 8784337007046657602, guid: 61ee19530868cbf4e84c18858a405dc1,
+        type: 3}
+      propertyPath: placeholder
+      value: 
+      objectReference: {fileID: 4189129591077149870, guid: bc10620f46f4759479b140af4c15a695,
         type: 3}
     - target: {fileID: 8784337007046657603, guid: 61ee19530868cbf4e84c18858a405dc1,
         type: 3}

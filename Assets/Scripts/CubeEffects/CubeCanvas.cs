@@ -33,6 +33,11 @@ public class CubeCanvas : MonoBehaviour
     [SerializeField]
     private GameObject cube; 
 
+    /// <summary>
+    /// Placeholder gameobject to help with scaling.
+    /// </summary>
+    [SerializeField]
+    private GameObject placeholder;
 
     /// <summary>
     /// Size of the cubes.
@@ -134,9 +139,13 @@ public class CubeCanvas : MonoBehaviour
         Vector3 destPos = GetObjectFinalPosition(rowToSpawn, rowPosition);
         List<EffectGroup> groups = GetEffectGroup(rowToSpawn, rowPosition);
 
-        cubes[rowToSpawn][rowPosition] = GameObject.Instantiate(cube, spawnPos, Quaternion.identity, transform);
+        cubes[rowToSpawn][rowPosition] = GameObject.Instantiate(placeholder, spawnPos, Quaternion.identity, transform);
+        
+        // cubes[rowToSpawn][rowPosition] = GameObject.Instantiate(cube, spawnPos, Quaternion.identity, transform);
         GameObject go = cubes[rowToSpawn][rowPosition];
         go.transform.localPosition = spawnPos;
+        GameObject temp = GameObject.Instantiate(cube, new Vector3(), Quaternion.identity, go.transform);
+        temp.transform.localPosition = new Vector3();
 
         go.transform.localScale = scale;
 
@@ -261,7 +270,7 @@ public class CubeCanvas : MonoBehaviour
     /// <param name="row">Row the object is in.</param>
     /// <returns>Coordinate of the object's initial position.</returns>
     private Vector3 GetObjectInitialPosition(int row) {
-        return new Vector3(row*cubeSize, canvasWidth*cubeSize, transform.position.z);
+        return new Vector3(row*cubeSize, canvasWidth*cubeSize, transform.position.z + (cubeSize / 2f));
     }
 
     /// <summary>
@@ -271,7 +280,7 @@ public class CubeCanvas : MonoBehaviour
     /// <param name="rowPosition">The object's final position in the row.</param>
     /// <returns>Coordinate of the object's final position.</returns>
     private Vector3 GetObjectFinalPosition(int row, int rowPosition) {
-        return new Vector3(row*cubeSize, rowPosition*cubeSize, transform.position.z);
+        return new Vector3(row*cubeSize, rowPosition*cubeSize, transform.position.z  + (cubeSize / 2f));
     }
 
     /// <summary>
