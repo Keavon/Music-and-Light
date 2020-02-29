@@ -83,21 +83,22 @@ public class CubeCanvas : MonoBehaviour
     /// <summary>
     /// List of effect group distribution.
     /// </summary>
-    private List<List<List<EffectGroup>>> groupDistribution;
+    private List<List<List<EffectGroup>>> groupDistribution = new List<List<List<EffectGroup>>>();
 
     // Start is called before the first frame update
     void Start()
     {
+        SetupEffectGroups();
         cubes = new GameObject[canvasHeight][];
-        if (groupDistribution.Count() != canvasHeight) {
-            Debug.LogWarning("Group dist size height doesn't match given canvas size");
-        }    
+        // if (groupDistribution.Count() != canvasHeight) {
+        //     Debug.LogWarning("Group dist size height doesn't match given canvas size");
+        // }    
 
         for (int i = 0;i < canvasHeight; i++) {
             cubes[i] = new GameObject[canvasWidth];
-            if (groupDistribution[i].Count != canvasWidth) {
-                Debug.LogWarning ("Group dist size width doesn't match given canvas size");
-            }
+            // if (groupDistribution[i].Count != canvasWidth) {
+            //     Debug.LogWarning ("Group dist size width doesn't match given canvas size");
+            // }
         }
 
         scale = new Vector3 (cubeSize * cubePercentage, cubeSize * cubePercentage, cubeSize * cubePercentage);
@@ -211,14 +212,26 @@ public class CubeCanvas : MonoBehaviour
     /// </summary>
     private void SetupEffectGroups() {
         List<List<EffectListWrapper>> outer = new List<List<EffectListWrapper>>();
-        for (int i = 0; i < groupDistributionEditor.Count; i++) {
-            outer.Add(groupDistributionEditor[i].list);
+        for (int i = 0; i < canvasHeight; i++) {
+            if (i < groupDistributionEditor.Count()) {
+                outer.Add(groupDistributionEditor[i].list);
+            }
             groupDistribution.Add(new List<List<EffectGroup>>());
         }  
 
-        for (int j = 0; j < outer.Count; j++) {
-            for (int k = 0; k < outer[j].Count; k++) {
-                groupDistribution[j].Add(outer[j][k].list);
+        for (int j = 0; j < groupDistribution.Count(); j++) {
+            if (j < outer.Count()) {
+                for (int k = 0; k < canvasWidth; k++) {
+                    if (k < outer[j].Count()) {
+                        groupDistribution[j].Add(outer[j][k].list);
+                    } else {
+                        groupDistribution[j].Add(new List<EffectGroup>());
+                    }
+                }
+            } else {
+                for (int l = 0; l < canvasWidth; l++) {
+                    groupDistribution[j].Add(new List<EffectGroup>());
+                }
             }
         }
     }
@@ -278,7 +291,7 @@ public class CubeCanvas : MonoBehaviour
         shortestRows.Add (minRow);
         for (int i = 0; i < rowLengths.Length; i++) {
             if (i != minRow) {
-                if (rowLengths [i] < minVal + Randomization.RandomInt(1,3)) {
+                if (rowLengths [i] < minVal + Randomization.RandomInt(1,3) && rowLengths [i] < canvasWidth) {
                     shortestRows.Add(i);
                 }
             }

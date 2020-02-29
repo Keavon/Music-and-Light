@@ -358,6 +358,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8784337007046657602, guid: 61ee19530868cbf4e84c18858a405dc1,
+        type: 3}
+      propertyPath: canvasHeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784337007046657602, guid: 61ee19530868cbf4e84c18858a405dc1,
+        type: 3}
+      propertyPath: cubeSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784337007046657602, guid: 61ee19530868cbf4e84c18858a405dc1,
+        type: 3}
+      propertyPath: cubePercentage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784337007046657602, guid: 61ee19530868cbf4e84c18858a405dc1,
+        type: 3}
+      propertyPath: cube
+      value: 
+      objectReference: {fileID: 6394123574665071919, guid: d4dc5db06170fdb47b483bc775e6efd0,
+        type: 3}
     - target: {fileID: 8784337007046657603, guid: 61ee19530868cbf4e84c18858a405dc1,
         type: 3}
       propertyPath: m_Name

@@ -5,10 +5,14 @@ using UnityEngine;
 public class MoveToDestination : MonoBehaviour
 {
 
+    private class DestinationWrapper {
+        public Vector3 destination;
+    }
+
     /// <summary>
     /// Where the object should move to.
     /// </summary>
-    private Vector3 destination;
+    private DestinationWrapper destination;
 
     /// <summary>
     /// Is the move finished?
@@ -39,11 +43,12 @@ public class MoveToDestination : MonoBehaviour
     void Update()
     {
         if (destination != null && !moveFinished) {
-            if (transform.localPosition != destination) {
+            if (transform.localPosition != destination.destination) {
                 moveFinished = false;
-                transform.localPosition = Vector3.MoveTowards (transform.localPosition, destination, MoveToDestination.speed * Time.deltaTime);
+                transform.localPosition = Vector3.MoveTowards (transform.localPosition, destination.destination, MoveToDestination.speed * Time.deltaTime);
             } else {
                 moveFinished = true;
+                destination = null;
             }
         }
     }
@@ -53,7 +58,10 @@ public class MoveToDestination : MonoBehaviour
     /// </summary>
     /// <param name="dest">Destination for the object.</param>
     public void SetDestination (Vector3 dest) {
-        destination = dest;
+        if (destination == null) {
+            destination = new DestinationWrapper();
+        }
+        destination.destination = dest;
     }
     
     public static void SetSpeed (float speed) {
