@@ -16,7 +16,7 @@ public class ScaleCube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        audioInfluence = Lasp.MasterInput.GetPeakLevel(Lasp.FilterType.LowPass);
+        audioInfluence = Lasp.MasterInput.GetPeakLevel(Lasp.FilterType.LowPass) * 10;
         audioInfluenceVec = new Vector3(1 + audioInfluence, 1 + audioInfluence, 1 + audioInfluence);
         transform.localScale = audioInfluenceVec;
         print(audioInfluence);
