@@ -63,10 +63,28 @@ public class CubeCanvas : MonoBehaviour
     private int canvasHeight = 5;
 
     /// <summary>
+    /// Number of cubes that fit into the canvas vertically.
+    /// </summary> 
+    public int CanvasHeight {
+        get {
+            return canvasHeight;
+        }
+    }
+
+    /// <summary>
     /// Number of cubes that fit into the canvas horizontally.
     /// </summary>
     [SerializeField]
     private int canvasWidth = 10;
+
+    /// <summary>
+    /// Number of cubes that fit into the canvas horizontally.
+    /// </summary>
+    public int CanvasWidth {
+        get {
+            return canvasWidth;
+        }
+    }
 
     /// <summary>
     /// Array of cubes. Note: arranged height first, then width for ease of use.
@@ -146,7 +164,7 @@ public class CubeCanvas : MonoBehaviour
         GameObject go = cubes[rowToSpawn][rowPosition];
         go.transform.localPosition = spawnPos;
         GameObject temp = GameObject.Instantiate(cube, new Vector3(), Quaternion.identity, go.transform);
-        temp.transform.localPosition = new Vector3();
+        temp.transform.localPosition = new Vector3(0, 0, -(transform.position.z + (cubeSize / 2f)));
 
         go.transform.localScale = scale;
 
@@ -154,7 +172,9 @@ public class CubeCanvas : MonoBehaviour
         MoveToDestination mtd = go.GetComponent<MoveToDestination> ();
         mtd.SetDestination(destPos);
 
-        EditEffectGroup (rowToSpawn, rowPosition, effects);
+        if (effects.Count > 0) {
+            EditEffectGroup (rowToSpawn, rowPosition, effects);
+        }
 
         foreach (EffectGroup eg in groups) {
             eg.AddObjectToGroup(go);
@@ -273,7 +293,7 @@ public class CubeCanvas : MonoBehaviour
     /// <param name="row">Row the object is in.</param>
     /// <returns>Coordinate of the object's initial position.</returns>
     private Vector3 GetObjectInitialPosition(int row) {
-        return new Vector3(row*cubeSize, canvasWidth*cubeSize, transform.position.z + (cubeSize / 2f));
+        return new Vector3(row*cubeSize, canvasWidth*cubeSize, 0);
     }
 
     /// <summary>

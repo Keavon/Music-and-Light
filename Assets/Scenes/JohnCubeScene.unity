@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &308370525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8784337007046657602, guid: 61ee19530868cbf4e84c18858a405dc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8784337006486096695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e02465fd7734e94d8c5783d05131150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &356594955
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +144,7 @@ GameObject:
   - component: {fileID: 356594958}
   - component: {fileID: 356594957}
   - component: {fileID: 356594956}
+  - component: {fileID: 356594959}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -204,6 +217,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &356594959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356594955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c190112e79b2fe24d956f6a4195a03d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeCanvas: {fileID: 308370525}
 --- !u!1 &1442541106
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +332,7 @@ PrefabInstance:
     - target: {fileID: 8784337007046657601, guid: 61ee19530868cbf4e84c18858a405dc1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8784337007046657601, guid: 61ee19530868cbf4e84c18858a405dc1,
         type: 3}
