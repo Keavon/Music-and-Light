@@ -11,6 +11,7 @@ public class CenterOnCubeCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Started");
         int height = cubeCanvas.CanvasHeight;
         int width = cubeCanvas.CanvasWidth;
 
@@ -33,11 +34,13 @@ public class CenterOnCubeCanvas : MonoBehaviour
         newPos.x *= -1;
 
         transform.position = newPos;
+        Debug.Log(newPos);
+        Debug.Log(transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("Updating");
     }
 }

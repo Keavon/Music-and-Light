@@ -102,7 +102,7 @@ public class CubeCanvas : MonoBehaviour
     /// <summary>
     /// Time between spawning objects
     /// </summary>
-    private int spawnTimeStep = 1;
+    private float spawnTimeStep = 1f;
 
     /// <summary>
     /// Will cubes be spawned externally.
