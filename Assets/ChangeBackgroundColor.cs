@@ -23,7 +23,6 @@ public class ChangeBackgroundColor : MonoBehaviour
     {
         float t = Mathf.PingPong(Time.time, duration) / duration;
         audioInfluence = Mathf.Clamp(Lasp.MasterInput.GetPeakLevel(Lasp.FilterType.LowPass) * 5, 0, 1);
-
         cam.backgroundColor = new Color(audioInfluence, Mathf.Clamp((float)(audioInfluence - 0.5), 0, 1), Mathf.Clamp((float)(audioInfluence - 0.2), 0, 1));
         //cam.backgroundColor = Color.Lerp(col1, col2, t);
     }
