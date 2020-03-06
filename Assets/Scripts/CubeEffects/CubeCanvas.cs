@@ -124,10 +124,11 @@ public class CubeCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Spawns an object at a random position. Calls EditEffectGroup with the list of effects on the appropriate position for the spawned object.
     /// </summary>
+    /// <param name="effects">What effects to add to/remove from the object.</param>
     /// <returns></returns>
-    public bool SpawnObject() {
+    public bool SpawnObject(List<EffectGroup> effects) {
         int rowToSpawn = SelectRow();
 
         if (rowToSpawn == -1) {
@@ -152,6 +153,8 @@ public class CubeCanvas : MonoBehaviour
         go.AddComponent<MoveToDestination> ();
         MoveToDestination mtd = go.GetComponent<MoveToDestination> ();
         mtd.SetDestination(destPos);
+
+        EditEffectGroup (rowToSpawn, rowPosition, effects);
 
         foreach (EffectGroup eg in groups) {
             eg.AddObjectToGroup(go);
