@@ -117,7 +117,7 @@ public class CubeCanvas : MonoBehaviour
     void Update()
     {
         if (t > 5) {
-            SpawnObject();
+            SpawnObject(new List<EffectGroup> ());
             t = 0;
         }
         t += Time.deltaTime;
