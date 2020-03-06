@@ -97,6 +97,19 @@ public class CubeCanvas : MonoBehaviour
     [SerializeField]
     private float cubeSpeed = 1f;
 
+    
+    [SerializeField]
+    /// <summary>
+    /// Time between spawning objects
+    /// </summary>
+    private int spawnTimeStep = 1;
+
+    /// <summary>
+    /// Will cubes be spawned externally.
+    /// </summary>
+    [SerializeField]
+    private bool spawnSeperately = false;
+
     /// <summary>
     /// List of effect group distribution set in the editor.
     /// </summary>
@@ -107,17 +120,6 @@ public class CubeCanvas : MonoBehaviour
     /// List of effect group distribution.
     /// </summary>
     private List<List<List<EffectGroup>>> groupDistribution = new List<List<List<EffectGroup>>>();
-
-    [SerializeField]
-    /// <summary>
-    /// Time between spawning objects
-    /// </summary>
-    private int spawnTimeStep = 1;
-
-    /// <summary>
-    /// Will cubes be spawned externally.
-    /// </summary>
-    private bool spawnSeperately = false;
 
     // Start is called before the first frame update
     void Start()
