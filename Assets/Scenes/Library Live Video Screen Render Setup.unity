@@ -157,7 +157,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.6784314, g: 1, b: 0.3019608, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -214,7 +214,6 @@ GameObject:
   m_Component:
   - component: {fileID: 153895985}
   - component: {fileID: 153895984}
-  - component: {fileID: 153895983}
   - component: {fileID: 153895986}
   m_Layer: 0
   m_Name: Render Texture Camera MIDDLE
@@ -223,14 +222,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &153895983
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153895982}
-  m_Enabled: 1
 --- !u!20 &153895984
 Camera:
   m_ObjectHideFlags: 0
@@ -241,7 +232,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.9921569, g: 0.9921569, b: 0.9921569, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -588,7 +579,6 @@ GameObject:
   m_Component:
   - component: {fileID: 863520781}
   - component: {fileID: 863520780}
-  - component: {fileID: 863520779}
   - component: {fileID: 863520782}
   m_Layer: 0
   m_Name: Render Texture Camera BOTTOM
@@ -597,14 +587,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &863520779
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863520778}
-  m_Enabled: 1
 --- !u!20 &863520780
 Camera:
   m_ObjectHideFlags: 0
@@ -615,7 +597,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.9921569, g: 0.9921569, b: 0.9921569, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -776,6 +758,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: library_projection
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bb0488526c54d6b4bbe051b74ba85dca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5429994885111918107, guid: bb0488526c54d6b4bbe051b74ba85dca,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -843,7 +830,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1078925005}
   - component: {fileID: 1078925004}
-  - component: {fileID: 1078925003}
   - component: {fileID: 1078925006}
   m_Layer: 0
   m_Name: Render Texture Camera TOP
@@ -852,14 +838,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1078925003
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078925002}
-  m_Enabled: 1
 --- !u!20 &1078925004
 Camera:
   m_ObjectHideFlags: 0
@@ -870,7 +848,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.9921569, g: 0.9921569, b: 0.9921569, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -944,7 +922,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1774075737}
   - component: {fileID: 1774075736}
-  - component: {fileID: 1774075735}
   - component: {fileID: 1774075738}
   m_Layer: 0
   m_Name: Render Texture Camera SIDE
@@ -953,14 +930,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1774075735
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774075734}
-  m_Enabled: 1
 --- !u!20 &1774075736
 Camera:
   m_ObjectHideFlags: 0
@@ -971,7 +940,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.9921569, g: 0.9921569, b: 0.9921569, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1035,3 +1004,21 @@ MonoBehaviour:
   col2: {r: 0, g: 0, b: 1, a: 1}
   duration: 3
   audioInfluence: 0
+--- !u!1 &1832215523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3889969136904188550, guid: bb0488526c54d6b4bbe051b74ba85dca,
+    type: 3}
+  m_PrefabInstance: {fileID: 924841547}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1832215527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832215523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd3e2fde44bcfe4eaadf0b91a7f5115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
