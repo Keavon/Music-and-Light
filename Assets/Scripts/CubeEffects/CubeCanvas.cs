@@ -11,7 +11,8 @@ public class CubeCanvas : MonoBehaviour
     /// </summary>
     /// <typeparam name="T">Type of the list.</typeparam>
     [System.Serializable]
-    private class ListWrapper<T> {
+    private class ListWrapper<T>
+    {
         public List<T> list;
     }
 
@@ -19,19 +20,19 @@ public class CubeCanvas : MonoBehaviour
     /// Wrapper for a list of effect groups.
     /// </summary>
     [System.Serializable]
-    private class EffectListWrapper : ListWrapper<EffectGroup> {}
+    private class EffectListWrapper : ListWrapper<EffectGroup> { }
 
     /// <summary>
     /// Wrapper for a list of lists of effect groups.
     /// </summary>
     [System.Serializable]
-    private class ListEffectListWrapper : ListWrapper<EffectListWrapper> {}
+    private class ListEffectListWrapper : ListWrapper<EffectListWrapper> { }
 
     /// <summary>
     /// Cube game object that should spawn.
     /// </summary>
     [SerializeField]
-    private GameObject cube; 
+    private GameObject cube;
 
     /// <summary>
     /// Placeholder gameobject to help with scaling.
@@ -65,8 +66,10 @@ public class CubeCanvas : MonoBehaviour
     /// <summary>
     /// Number of cubes that fit into the canvas vertically.
     /// </summary> 
-    public int CanvasHeight {
-        get {
+    public int CanvasHeight
+    {
+        get
+        {
             return canvasHeight;
         }
     }
@@ -80,8 +83,10 @@ public class CubeCanvas : MonoBehaviour
     /// <summary>
     /// Number of cubes that fit into the canvas horizontally.
     /// </summary>
-    public int CanvasWidth {
-        get {
+    public int CanvasWidth
+    {
+        get
+        {
             return canvasWidth;
         }
     }
@@ -97,7 +102,7 @@ public class CubeCanvas : MonoBehaviour
     [SerializeField]
     private float cubeSpeed = 1f;
 
-    
+
     [SerializeField]
     /// <summary>
     /// Time between spawning objects
@@ -130,16 +135,17 @@ public class CubeCanvas : MonoBehaviour
         //     Debug.LogWarning("Group dist size height doesn't match given canvas size");
         // }    
 
-        for (int i = 0;i < canvasHeight; i++) {
+        for (int i = 0; i < canvasHeight; i++)
+        {
             cubes[i] = new GameObject[canvasWidth];
             // if (groupDistribution[i].Count != canvasWidth) {
             //     Debug.LogWarning ("Group dist size width doesn't match given canvas size");
             // }
         }
 
-        scale = new Vector3 (cubeSize * cubePercentage, cubeSize * cubePercentage, cubeSize * cubePercentage);
+        scale = new Vector3(cubeSize * cubePercentage, cubeSize * cubePercentage, cubeSize * cubePercentage);
 
-        MoveToDestination.SetSpeed (cubeSpeed);
+        MoveToDestination.SetSpeed(cubeSpeed);
     }
 
     private float t = 0;
@@ -147,8 +153,9 @@ public class CubeCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!spawnSeperately && t > spawnTimeStep) {
-            SpawnObject(new List<EffectGroup> ());
+        if (!spawnSeperately && t > spawnTimeStep)
+        {
+            SpawnObject(new List<EffectGroup>());
             t = 0;
         }
         t += Time.deltaTime;
@@ -159,20 +166,22 @@ public class CubeCanvas : MonoBehaviour
     /// </summary>
     /// <param name="effects">What effects to add to/remove from the object.</param>
     /// <returns></returns>
-    public bool SpawnObject(List<EffectGroup> effects) {
+    public bool SpawnObject(List<EffectGroup> effects)
+    {
         int rowToSpawn = SelectRow();
 
-        if (rowToSpawn == -1) {
+        if (rowToSpawn == -1)
+        {
             return false;
         }
 
-        int rowPosition = GetRowLengths() [rowToSpawn];
+        int rowPosition = GetRowLengths()[rowToSpawn];
         Vector3 spawnPos = GetObjectInitialPosition(rowToSpawn);
         Vector3 destPos = GetObjectFinalPosition(rowToSpawn, rowPosition);
         List<EffectGroup> groups = GetEffectGroup(rowToSpawn, rowPosition);
 
         cubes[rowToSpawn][rowPosition] = GameObject.Instantiate(placeholder, spawnPos, Quaternion.identity, transform);
-        
+
         // cubes[rowToSpawn][rowPosition] = GameObject.Instantiate(cube, spawnPos, Quaternion.identity, transform);
         GameObject go = cubes[rowToSpawn][rowPosition];
         go.transform.localPosition = spawnPos;
@@ -181,15 +190,17 @@ public class CubeCanvas : MonoBehaviour
 
         go.transform.localScale = scale;
 
-        go.AddComponent<MoveToDestination> ();
-        MoveToDestination mtd = go.GetComponent<MoveToDestination> ();
+        go.AddComponent<MoveToDestination>();
+        MoveToDestination mtd = go.GetComponent<MoveToDestination>();
         mtd.SetDestination(destPos);
 
-        if (effects.Count > 0) {
-            EditEffectGroup (rowToSpawn, rowPosition, effects);
+        if (effects.Count > 0)
+        {
+            EditEffectGroup(rowToSpawn, rowPosition, effects);
         }
 
-        foreach (EffectGroup eg in groups) {
+        foreach (EffectGroup eg in groups)
+        {
             eg.AddObjectToGroup(go);
         }
 
@@ -204,11 +215,16 @@ public class CubeCanvas : MonoBehaviour
     /// <param name="row">Row the block is in.</param>
     /// <param name="rowPos">Where in the row the block is.</param>
     /// <param name="effects">What effects to add to/remove from the block.</param>
-    public void EditEffectGroup (int row, int rowPos, List<EffectGroup> effects) {
-        foreach (EffectGroup eg in effects) {
-            if (groupDistribution[row][rowPos].Contains (eg)) {
+    public void EditEffectGroup(int row, int rowPos, List<EffectGroup> effects)
+    {
+        foreach (EffectGroup eg in effects)
+        {
+            if (groupDistribution[row][rowPos].Contains(eg))
+            {
                 eg.RemoveObjectFromGroup(cubes[row][rowPos]);
-            } else {
+            }
+            else
+            {
                 eg.AddObjectToGroup(cubes[row][rowPos]);
             }
         }
@@ -222,9 +238,12 @@ public class CubeCanvas : MonoBehaviour
     /// <param name="row">Row the block is in.</param>
     /// <param name="rowPos">Where in the row the block is.</param>
     /// <param name="effects">What effects to add to the block.</param>
-    public void AddEffectGroup (int row, int rowPos, List<EffectGroup> effects) {
-        groupDistribution[row][rowPos] = (List<EffectGroup>)(groupDistribution[row][rowPos].Union(effects).Distinct());
-        foreach (EffectGroup eg in effects) {
+    public void AddEffectGroup(int row, int rowPos, List<EffectGroup> effects)
+    {
+        groupDistribution[row][rowPos] = (groupDistribution[row][rowPos].Union(effects).Distinct()).ToList<EffectGroup>();
+        foreach (EffectGroup eg in effects)
+        {
+            Debug.Log(eg);
             eg.AddObjectToGroup(cubes[row][rowPos]);
         }
     }
@@ -235,9 +254,11 @@ public class CubeCanvas : MonoBehaviour
     /// <param name="row">Row the block is in.</param>
     /// <param name="rowPos">Where in hte row the block is.</param>
     /// <param name="effects">What effects to remove from the block.</param>
-    public void RemoveEffectGroup (int row, int rowPos, List<EffectGroup> effects) {
+    public void RemoveEffectGroup(int row, int rowPos, List<EffectGroup> effects)
+    {
         groupDistribution[row][rowPos] = (List<EffectGroup>)(groupDistribution[row][rowPos].Except(effects).Distinct());
-        foreach (EffectGroup eg in effects) {
+        foreach (EffectGroup eg in effects)
+        {
             eg.RemoveObjectFromGroup(cubes[row][rowPos]);
         }
     }
@@ -248,33 +269,46 @@ public class CubeCanvas : MonoBehaviour
     /// <param name="row">Row the block is in.</param>
     /// <param name="rowPosition">Where in the row the block is.</param>
     /// <returns>List of effects on the block at the current position.</returns>
-    public List<EffectGroup> GetEffectGroup (int row, int rowPosition) {
+    public List<EffectGroup> GetEffectGroup(int row, int rowPosition)
+    {
         return groupDistribution[row][rowPosition];
     }
 
     /// <summary>
     /// Convert the lists used to set up effect groups in the editor to regular lists.
     /// </summary>
-    private void SetupEffectGroups() {
+    private void SetupEffectGroups()
+    {
         List<List<EffectListWrapper>> outer = new List<List<EffectListWrapper>>();
-        for (int i = 0; i < canvasHeight; i++) {
-            if (i < groupDistributionEditor.Count()) {
+        for (int i = 0; i < canvasHeight; i++)
+        {
+            if (i < groupDistributionEditor.Count())
+            {
                 outer.Add(groupDistributionEditor[i].list);
             }
             groupDistribution.Add(new List<List<EffectGroup>>());
-        }  
+        }
 
-        for (int j = 0; j < groupDistribution.Count(); j++) {
-            if (j < outer.Count()) {
-                for (int k = 0; k < canvasWidth; k++) {
-                    if (k < outer[j].Count()) {
+        for (int j = 0; j < groupDistribution.Count(); j++)
+        {
+            if (j < outer.Count())
+            {
+                for (int k = 0; k < canvasWidth; k++)
+                {
+                    if (k < outer[j].Count())
+                    {
                         groupDistribution[j].Add(outer[j][k].list);
-                    } else {
+                    }
+                    else
+                    {
                         groupDistribution[j].Add(new List<EffectGroup>());
                     }
                 }
-            } else {
-                for (int l = 0; l < canvasWidth; l++) {
+            }
+            else
+            {
+                for (int l = 0; l < canvasWidth; l++)
+                {
                     groupDistribution[j].Add(new List<EffectGroup>());
                 }
             }
@@ -285,13 +319,17 @@ public class CubeCanvas : MonoBehaviour
     /// Check if all spawned objects have finished moving. Ignores any remaining gaps in the canvas.
     /// </summary>
     /// <returns>Returns true if all objects are done moving, and false otherwise.</returns>
-    public bool CheckAllObjectsDoneMoving () {
+    public bool CheckAllObjectsDoneMoving()
+    {
         GameObject obj;
 
-        for (int i = 0; i < canvasHeight; i++) {
-            for (int j = 0; j < canvasWidth; j++) {
+        for (int i = 0; i < canvasHeight; i++)
+        {
+            for (int j = 0; j < canvasWidth; j++)
+            {
                 obj = cubes[i][j];
-                if (obj != null && !obj.GetComponent<MoveToDestination> ().IsMoveFinished) {
+                if (obj != null && !obj.GetComponent<MoveToDestination>().IsMoveFinished)
+                {
                     return false;
                 }
             }
@@ -305,8 +343,9 @@ public class CubeCanvas : MonoBehaviour
     /// </summary>
     /// <param name="row">Row the object is in.</param>
     /// <returns>Coordinate of the object's initial position.</returns>
-    private Vector3 GetObjectInitialPosition(int row) {
-        return new Vector3(row*cubeSize, canvasWidth*cubeSize, 0);
+    private Vector3 GetObjectInitialPosition(int row)
+    {
+        return new Vector3(row * cubeSize, canvasWidth * cubeSize, 0);
     }
 
     /// <summary>
@@ -315,28 +354,34 @@ public class CubeCanvas : MonoBehaviour
     /// <param name="row">Row the object is in.</param>
     /// <param name="rowPosition">The object's final position in the row.</param>
     /// <returns>Coordinate of the object's final position.</returns>
-    private Vector3 GetObjectFinalPosition(int row, int rowPosition) {
-        return new Vector3(row*cubeSize, rowPosition*cubeSize, transform.position.z  + (cubeSize / 2f));
+    private Vector3 GetObjectFinalPosition(int row, int rowPosition)
+    {
+        return new Vector3(row * cubeSize, rowPosition * cubeSize, transform.position.z + (cubeSize / 2f));
     }
 
     /// <summary>
     /// Select what row to spawn the next object in.
     /// </summary>
     /// <returns>Index of the row to spawn the next object in.</returns>
-    private int SelectRow() {
+    private int SelectRow()
+    {
         int[] rowLengths = GetRowLengths();
-        List<int> shortestRows = new List<int> ();
+        List<int> shortestRows = new List<int>();
         int minRow = GetMinIndex(rowLengths);
         int minVal = rowLengths[minRow];
 
-        if (minVal == canvasWidth) {
+        if (minVal == canvasWidth)
+        {
             return -1;
         }
 
-        shortestRows.Add (minRow);
-        for (int i = 0; i < rowLengths.Length; i++) {
-            if (i != minRow) {
-                if (rowLengths [i] < minVal + Randomization.RandomInt(1,3) && rowLengths [i] < canvasWidth) {
+        shortestRows.Add(minRow);
+        for (int i = 0; i < rowLengths.Length; i++)
+        {
+            if (i != minRow)
+            {
+                if (rowLengths[i] < minVal + Randomization.RandomInt(1, 3) && rowLengths[i] < canvasWidth)
+                {
                     shortestRows.Add(i);
                 }
             }
@@ -350,20 +395,25 @@ public class CubeCanvas : MonoBehaviour
     /// </summary>
     /// <param name="list">Array of numbers.</param>
     /// <returns>Index of the min value in the array.</returns>
-    private int GetMinIndex(int[] list) {
-        if (list == null) {
-            Debug.LogError ("list null in min index");
-        }  
+    private int GetMinIndex(int[] list)
+    {
+        if (list == null)
+        {
+            Debug.LogError("list null in min index");
+        }
 
-        if (list.Length == 0) {
-            Debug.LogError ("list empty in min index");
+        if (list.Length == 0)
+        {
+            Debug.LogError("list empty in min index");
         }
 
         int minIndex = 0;
         int minVal = list[0];
 
-        for (int i = 1; i < list.Length; i++) {
-            if (list[i] < minVal) {
+        for (int i = 1; i < list.Length; i++)
+        {
+            if (list[i] < minVal)
+            {
                 minVal = list[i];
                 minIndex = i;
             }
@@ -377,17 +427,21 @@ public class CubeCanvas : MonoBehaviour
     /// Get the lengths of each row.
     /// </summary>
     /// <returns>An array containing the lengths of each row.</returns>
-    private int[] GetRowLengths() {
+    private int[] GetRowLengths()
+    {
         int[] rowLengths = new int[canvasHeight];
 
-        for (int i = 0; i < canvasHeight; i++) {
-            for (int j = 0; j < canvasWidth; j++) {
-                if (cubes[i][j] != null) {
+        for (int i = 0; i < canvasHeight; i++)
+        {
+            for (int j = 0; j < canvasWidth; j++)
+            {
+                if (cubes[i][j] != null)
+                {
                     rowLengths[i]++;
                 }
             }
         }
-        
+
         return rowLengths;
     }
 

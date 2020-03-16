@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Video Screen Top
-  m_Shader: {fileID: -6465566751694194690, guid: 04c59fb41ce79e84b936e4ebb0708a37,
-    type: 3}
+  m_Shader: {fileID: 4800000, guid: 2c265a29a68ea6844ba384e623f77e6b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -57,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureA:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: ca13deedbb581384c927c5d2c9ee417c, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureB:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: 75d4baeb96bcef3478e1449d222840de, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -69,6 +68,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Factor: 0
     - _FadeFactor: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
