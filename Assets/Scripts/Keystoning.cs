@@ -27,7 +27,7 @@ public class Keystoning : MonoBehaviour {
 	GameObject frameLines;
 	GameObject outputCamera;
 
-	// TODO: Add GUI to control camera X/Y/Z and heading/pitch/roll. Eventually add feathering and bilinear interpolation.
+	// TODO: Add GUI to control camera X/Y/Z and heading/pitch/roll and zoom. Eventually add feathering and bilinear interpolation.
 
 	void Start() {
 		uiCamera = transform.parent.Find("Management Window Camera").GetComponent<Camera>();
@@ -92,6 +92,10 @@ public class Keystoning : MonoBehaviour {
 		// }
 
 		mesh.vertices = vertices;
+		mat.SetVector("_v0", vertices[0]);
+		mat.SetVector("_v1", vertices[1]);
+		mat.SetVector("_v2", vertices[2]);
+		mat.SetVector("_v3", vertices[3]);
 	}
 
 	void OnGUI() {
