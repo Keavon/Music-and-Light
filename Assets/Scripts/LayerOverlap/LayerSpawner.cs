@@ -198,4 +198,32 @@ public class LayerSpawner : MonoBehaviour
         layersToSpawn[(int)direction] = GenerateLayer(direction);
     }
 
+    public void StartLayer(Directions direction, Color c) {
+        GameObject go = layersToSpawn[(int)direction];
+        go.GetComponent<MeshRenderer>().material.color = c;
+        go.GetComponent<MoveDirection>().enabled = true;
+        go.GetComponent<MoveBack>().enabled = true;
+        go.GetComponent<FadeOut>().enabled = true;
+        layersToSpawn[(int)direction] = GenerateLayer(direction);
+    }
+
+    public void StartLayer(Directions direction, float speed) {
+        GameObject go = layersToSpawn[(int)direction];
+        go.GetComponent<MoveDirection>().enabled = true;
+        go.GetComponent<MoveDirection>().localSpeed = speed;
+        go.GetComponent<MoveBack>().enabled = true;
+        go.GetComponent<FadeOut>().enabled = true;
+        layersToSpawn[(int)direction] = GenerateLayer(direction);
+    }
+
+    public void StartLayer(Directions direction, Color c, float speed) {
+        GameObject go = layersToSpawn[(int)direction];
+        go.GetComponent<MeshRenderer>().material.color = c;
+        go.GetComponent<MoveDirection>().enabled = true;
+        go.GetComponent<MoveDirection>().localSpeed = speed;
+        go.GetComponent<MoveBack>().enabled = true;
+        go.GetComponent<FadeOut>().enabled = true;
+        layersToSpawn[(int)direction] = GenerateLayer(direction);
+    }
+
 }

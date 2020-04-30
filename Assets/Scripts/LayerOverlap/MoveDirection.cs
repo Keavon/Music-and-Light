@@ -7,6 +7,10 @@ public class MoveDirection : MonoBehaviour
 
     public Vector3 direction = new Vector3 (1, 0, 0);
 
+    public float localSpeed = 1;
+
+    public static float globalSpeed = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +24,6 @@ public class MoveDirection : MonoBehaviour
         // Vector3 pos = transform.localPosition;
         // pos = pos + (direction * Time.deltaTime);
         // transform.localPosition = pos;
-        transform.localPosition += direction * Time.deltaTime;
+        transform.localPosition += direction * Time.deltaTime * localSpeed * globalSpeed;
     }
 }
