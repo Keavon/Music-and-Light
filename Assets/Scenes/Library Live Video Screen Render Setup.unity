@@ -601,7 +601,7 @@ PrefabInstance:
     - target: {fileID: 8784337007046657602, guid: 61ee19530868cbf4e84c18858a405dc1,
         type: 3}
       propertyPath: groupDistributionEditor.Array.data[0].list.Array.data[0].list.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8784337007046657602, guid: 61ee19530868cbf4e84c18858a405dc1,
         type: 3}

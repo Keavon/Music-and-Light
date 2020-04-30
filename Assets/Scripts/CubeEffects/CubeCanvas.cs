@@ -241,9 +241,11 @@ public class CubeCanvas : MonoBehaviour
     public void AddEffectGroup(int row, int rowPos, List<EffectGroup> effects)
     {
         groupDistribution[row][rowPos] = (groupDistribution[row][rowPos].Union(effects).Distinct()).ToList<EffectGroup>();
-        foreach (EffectGroup eg in effects)
-        {
-            eg.AddObjectToGroup(cubes[row][rowPos]);
+        if (cubes[row][rowPos] != null) {
+            foreach (EffectGroup eg in effects)
+            {
+                eg.AddObjectToGroup(cubes[row][rowPos]);
+            }
         }
     }
 
