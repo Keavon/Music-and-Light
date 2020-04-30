@@ -193,6 +193,7 @@ public class LayerSpawner : MonoBehaviour
     public void StartLayer(Directions direction) {
         GameObject go = layersToSpawn[(int)direction];
         go.GetComponent<MoveDirection>().enabled = true;
+        go.GetComponent<MoveDirection>().localSpeed = Randomization.RandomFloat(1, 3);;
         go.GetComponent<MoveBack>().enabled = true;
         go.GetComponent<FadeOut>().enabled = true;
         layersToSpawn[(int)direction] = GenerateLayer(direction);
