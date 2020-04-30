@@ -8,6 +8,8 @@ public class LayerEffectController : MonoBehaviour
 
     public List<GameObject> walls = new List<GameObject>();
 
+    public List<LayerSpawner> spawners = new List<LayerSpawner>();
+
     public bool autoFind = true;
 
     public GameObject layerPrefab;
@@ -26,6 +28,7 @@ public class LayerEffectController : MonoBehaviour
 
         foreach(GameObject wall in walls) {
             wall.AddComponent<LayerSpawner>();
+            spawners.Add(wall.GetComponent<LayerSpawner>());
             wall.GetComponent<LayerSpawner>().InitLayer(layerPrefab);
         }
 
