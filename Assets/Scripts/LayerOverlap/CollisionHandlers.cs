@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionHandlers 
+public class CollisionHandlers : MonoBehaviour
 {
-    public void OnCollisionEnter(Collision collision) {
-        GameObject self = collision.collider.gameObject;
-        GameObject other = collision.GetContact(0).otherCollider.gameObject;
+    public void OnTriggerEnter(Collider collider) {
+        GameObject self = gameObject;
+        GameObject other = collider.gameObject;
 
         OverlapShapeData overlap = self.GetComponent<OverlapShapeData>();
 
@@ -16,10 +16,14 @@ public class CollisionHandlers
             } else {
                 StopMoving(self);
             }
-        } if (other.tag == "Window") {
+        } else if (other.tag == "Window") {
             StopMoving(self);
+        } else if (other.tag == "Layer") {
+            // Ignore
+        } else if (other.tag == "Wall") {
+            GameObject.Destroy(self);
         } else {
-            Debug.LogError ("Error - forgot to tag one of the colliders");
+            Debug.LogError ("Error - forgot to tag one of the colliders: " + other.name);
         }
     }
 

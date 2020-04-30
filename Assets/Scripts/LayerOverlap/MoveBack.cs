@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveBack : MonoBehaviour
 {
 
-    public float speed = 1;
+    public float speed = 0.02f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,12 @@ public class MoveBack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = transform.position;
-        pos = pos + new Vector3(0, 0, speed * Time.deltaTime);
+        Transform parent = transform.parent;
+        if (parent.name == "SideScreen" || parent.name == "Test") {
+            transform.localPosition += new Vector3(speed * Time.deltaTime, 0, 0);
+        } else {
+            transform.localPosition -= new Vector3(0, 0, speed * Time.deltaTime);
+        }
+        
     }
 }

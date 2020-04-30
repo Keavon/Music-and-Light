@@ -16,7 +16,10 @@ public class MoveDirection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = transform.position;
-        pos = pos + (direction * Time.deltaTime);
+        // Debug.Log ("move");
+        // Vector3 pos = transform.localPosition;
+        // pos = pos + (direction * Time.deltaTime);
+        // transform.localPosition = pos;
+        transform.localPosition += direction * Time.deltaTime;
     }
 }
