@@ -369,9 +369,8 @@ Transform:
   - {fileID: 490452182}
   - {fileID: 1944740086}
   - {fileID: 1410566}
-  - {fileID: 1500274713}
   m_Father: {fileID: 1363570550}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &229189366
 GameObject:
@@ -498,11 +497,10 @@ Transform:
   - {fileID: 731032461}
   - {fileID: 832330165}
   - {fileID: 300102391}
-  - {fileID: 1150757742}
   - {fileID: 1019341781}
   - {fileID: 1316292165}
   m_Father: {fileID: 1363570550}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &300102390
 GameObject:
@@ -964,7 +962,7 @@ GameObject:
   - component: {fileID: 589004219}
   - component: {fileID: 589004218}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: BottomParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -978,11 +976,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589004216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.21, y: 0.033, z: 0.017}
+  m_LocalPosition: {x: 8.43, y: -0.38600004, z: -13.973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1332661365}
-  m_RootOrder: 7
+  m_Father: {fileID: 1363570550}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &589004218
 MonoBehaviour:
@@ -997,6 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
+  maxSpeed: 8
 --- !u!114 &589004219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,7 +1164,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5765,13 +5764,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602803742}
-  m_LocalRotation: {x: 0.67953736, y: 0, z: 0.73364097, w: 0}
-  m_LocalPosition: {x: 12.63, y: 1.25, z: 4.368}
+  m_LocalRotation: {x: 0.9997868, y: -0, z: 0.020647869, w: 0}
+  m_LocalPosition: {x: 13.630511, y: 1.25, z: 5.4951177}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 912352868}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 85.615005, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 177.634, z: 180.00002}
 --- !u!114 &602803744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5899,8 +5898,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672886350}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.2, y: 0.787, z: 1.936}
+  m_LocalRotation: {x: -0, y: 0.71945655, z: -0, w: 0.6945374}
+  m_LocalPosition: {x: 14.013161, y: 0.78700006, z: 2.0121202}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 828950597}
@@ -5912,10 +5911,9 @@ Transform:
   - {fileID: 1253668550}
   - {fileID: 1058228802}
   - {fileID: 1267403471}
-  - {fileID: 1462768661}
   m_Father: {fileID: 1363570550}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 92.019005, z: 0}
 --- !u!1 &731032460
 GameObject:
   m_ObjectHideFlags: 0
@@ -6460,7 +6458,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 283538384}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1019341782
 BoxCollider:
@@ -6762,7 +6760,7 @@ GameObject:
   - component: {fileID: 1150757745}
   - component: {fileID: 1150757746}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: TopParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6775,12 +6773,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150757741}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.504, y: 0.763, z: 1.618}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.964, y: 0.763, z: -12.642}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 283538384}
-  m_RootOrder: 6
+  m_Father: {fileID: 1363570550}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1150757743
 ParticleSystemRenderer:
@@ -6929,7 +6927,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -7036,7 +7034,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.41560936, b: 0.5660378, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -11538,6 +11536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
+  maxSpeed: 5
 --- !u!1 &1247588300
 GameObject:
   m_ObjectHideFlags: 0
@@ -11792,7 +11791,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 283538384}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1316292166
 BoxCollider:
@@ -11874,9 +11873,8 @@ Transform:
   - {fileID: 2027074129}
   - {fileID: 735745698}
   - {fileID: 1300207500}
-  - {fileID: 589004217}
   m_Father: {fileID: 1363570550}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1337399024
 GameObject:
@@ -11993,9 +11991,13 @@ Transform:
   m_LocalPosition: {x: -0.46902332, y: 0.8154391, z: 2.3843765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1150757742}
   - {fileID: 283538384}
+  - {fileID: 1500274713}
   - {fileID: 207183533}
+  - {fileID: 589004217}
   - {fileID: 1332661365}
+  - {fileID: 1462768661}
   - {fileID: 672886351}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -12058,7 +12060,7 @@ GameObject:
   - component: {fileID: 1462768663}
   - component: {fileID: 1462768662}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: SideScreenParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12071,13 +12073,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462768660}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.043, y: -0.157, z: -0.01}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.971738, y: 0.656, z: 2.0576081}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 672886351}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_Father: {fileID: 1363570550}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1462768662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12091,6 +12093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
+  maxSpeed: 8
 --- !u!114 &1462768663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12259,7 +12262,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -12890,7 +12893,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.2
+      value: 0.1
       mode: 0
       spread: 0
       speed:
@@ -16848,7 +16851,7 @@ GameObject:
   - component: {fileID: 1500274715}
   - component: {fileID: 1500274714}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: MiddleParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16862,11 +16865,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500274712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.143, y: -0.081, z: -0.053}
+  m_LocalPosition: {x: -1.7169999, y: 0.09200001, z: -13.683001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 207183533}
-  m_RootOrder: 9
+  m_Father: {fileID: 1363570550}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1500274714
 MonoBehaviour:
@@ -16881,6 +16884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
+  maxSpeed: 8
 --- !u!114 &1500274715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17049,7 +17053,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 5
       maxCurve:
         serializedVersion: 2
