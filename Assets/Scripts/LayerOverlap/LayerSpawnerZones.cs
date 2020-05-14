@@ -1,12 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-
-
-
-public class LayerSpawner : MonoBehaviour
+public class LayerSpawnerZones : MonoBehaviour
 {
 
     public enum Directions {
@@ -16,6 +13,7 @@ public class LayerSpawner : MonoBehaviour
         West = 3
     }
 
+
     private GameObject layerPrefab;
 
     private GameObject[] layersToSpawn = new GameObject[4];
@@ -24,9 +22,22 @@ public class LayerSpawner : MonoBehaviour
 
     private Vector2 max;
 
+    public List<Transform> spawnZones = new List<Transform>();
+    
+    public List<Transform> szNorth = new List<Transform>();
+    public List<Transform> szSouth = new List<Transform>();
+    public List<Transform> szEast = new List<Transform>();
+    public List<Transform> szWest = new List<Transform>();
+
     // Start is called before the first frame update
     void Start()
     {
+        spawnZones = transform.GetComponentsInChildren<Transform>().Where(t => t.tag.Contains("SpawnZone")).ToList();
+
+        szNorth = spawnZones.Where(t => t.tag.Contains("North")).ToList();
+        szSouth = spawnZones.Where(t => t.tag.Contains("South")).ToList();
+        szEast = spawnZones.Where(t => t.tag.Contains("East")).ToList();
+        szWest = spawnZones.Where(t => t.tag.Contains("West")).ToList();
 
         List<Transform> temp = transform.GetComponentsInChildren<Transform>().Where(t => t.tag == "Wall").ToList();
 
@@ -83,6 +94,9 @@ public class LayerSpawner : MonoBehaviour
         //         layer.transform.localPosition = new Vector3(-tempPosition.z, tempPosition.y, tempPosition.x);
         //     }
         // }
+
+        
+
     }
 
     // Update is called once per frame
@@ -103,33 +117,112 @@ public class LayerSpawner : MonoBehaviour
     }
 
     private GameObject GenerateLayer(Directions direction) {
-        GameObject layer = GameObject.Instantiate(layerPrefab, new Vector3(), Quaternion.identity, transform) as GameObject;
-        layer.name = direction.ToString();
-        layer.transform.localEulerAngles += new Vector3(90, 0, 0);
-        layer.transform.localScale = GenerateDimensions(max.x - min.x, max.y - min.y) / 10;
-
-        switch (direction)
-        {
+        // Debug.Log (direction);
+        Transform selectedZone = null;
+        switch (direction) {
             case Directions.North:
-                layer.transform.localPosition = new Vector3(min.x + layer.transform.localScale.x*5, max.y + layer.transform.localScale.z*5, 0.14f);
-                layer.transform.localPosition += new Vector3(GeneratePosition(max.x - min.x - layer.transform.localScale.x*10), 0, 0.14f);
-                break;
-            case Directions.East:
-                layer.transform.localPosition = new Vector3(max.x + layer.transform.localScale.x*5, min.y + layer.transform.localScale.z*5, 0.14f);
-                layer.transform.localPosition += new Vector3(0, GeneratePosition(max.y - min.y - layer.transform.localScale.z*10), 0.14f);
+                selectedZone = szNorth[Randomization.RandomInt(0, szNorth.Count)];
                 break;
             case Directions.South:
-                layer.transform.localPosition = new Vector3(min.x + layer.transform.localScale.x*5, min.y - layer.transform.localScale.z*5, 0.14f);
-                layer.transform.localPosition += new Vector3(GeneratePosition(max.x - min.x - layer.transform.localScale.x*10), 0, 0.14f);
+                selectedZone = szSouth[Randomization.RandomInt(0, szSouth.Count)];
+                break;
+            case Directions.East:
+                selectedZone = szEast[Randomization.RandomInt(0, szEast.Count)];
                 break;
             case Directions.West:
-                layer.transform.localPosition = new Vector3(min.x - layer.transform.localScale.x*5, min.y + layer.transform.localScale.z*5, 0.14f);
-                layer.transform.localPosition += new Vector3(0, GeneratePosition(max.y - min.y - layer.transform.localScale.z*10), 0.14f);
+                selectedZone = szWest[Randomization.RandomInt(0, szWest.Count)];
                 break;
             default:
                 Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
                 break;
         }
+
+        GameObject layer = GameObject.Instantiate(layerPrefab, new Vector3(), Quaternion.identity, selectedZone) as GameObject;
+        layer.name = direction.ToString();
+        layer.transform.localEulerAngles += new Vector3(90, 0, 0);
+
+        BoxCollider area = selectedZone.GetComponent<BoxCollider>();
+
+        layer.transform.localScale = GenerateDimensions(area) / 10;
+
+        //layer.transform.localScale = new Vector3 (.1f, .1f, .1f);
+
+        //layer.transform.localPosition = new Vector3(1, 1, 1);
+
+        switch (direction) {
+            case Directions.North:
+                if (transform.name == "SideScreen" || transform.name == "Test") {
+                    layer.transform.localPosition = new Vector3(0, -(area.size.y - (layer.transform.localScale.z*10))/2, 0);
+                    float sides = (area.size.z - (layer.transform.localScale.x*10))/2;
+                    layer.transform.localPosition += new Vector3(0, 0, Randomization.RandomFloat(-sides, sides));
+                } else {
+                    layer.transform.localPosition = new Vector3(0, -(area.size.y - (layer.transform.localScale.z*10))/2, 0);
+                    float sides = (area.size.x - (layer.transform.localScale.x*10))/2;
+                    layer.transform.localPosition += new Vector3(Randomization.RandomFloat(-sides, sides), 0, 0);
+                }
+                break;
+            case Directions.South:
+                if (transform.name == "SideScreen" || transform.name == "Test") {
+                    layer.transform.localPosition = new Vector3(0, (area.size.y - (layer.transform.localScale.z*10))/2, 0);
+                    float sides = (area.size.z - (layer.transform.localScale.x*10))/2;
+                    layer.transform.localPosition += new Vector3(0, 0, Randomization.RandomFloat(-sides, sides));
+                } else {
+                    layer.transform.localPosition = new Vector3(0, (area.size.y - (layer.transform.localScale.z*10))/2, 0);
+                    float sides = (area.size.x - (layer.transform.localScale.x*10))/2;
+                    layer.transform.localPosition += new Vector3(Randomization.RandomFloat(-sides, sides), 0, 0);
+                }
+                break;
+            case Directions.East:
+                if (transform.name == "SideScreen" || transform.name == "Test") {
+                    layer.transform.localPosition = new Vector3(0, 0, (area.size.z - (layer.transform.localScale.x*10))/2);
+                    float sides = (area.size.y - (layer.transform.localScale.z*10))/2;
+                    layer.transform.localPosition += new Vector3(0, Randomization.RandomFloat(-sides, sides), 0);
+                } else {
+                    layer.transform.localPosition = new Vector3((area.size.x - (layer.transform.localScale.x*10))/2, 0, 0);
+                    float sides = (area.size.y - (layer.transform.localScale.z*10))/2;
+                    layer.transform.localPosition += new Vector3(0, Randomization.RandomFloat(-sides, sides), 0);
+                }
+                break;
+            case Directions.West:
+                if (transform.name == "SideScreen" || transform.name == "Test") {
+                    layer.transform.localPosition = new Vector3(0, 0, -(area.size.z - (layer.transform.localScale.x*10))/2);
+                    float sides = (area.size.y - (layer.transform.localScale.z*10))/2;
+                    layer.transform.localPosition += new Vector3(0, Randomization.RandomFloat(-sides, sides), 0);
+                } else {
+                    layer.transform.localPosition = new Vector3(-(area.size.x - (layer.transform.localScale.x*10))/2, 0, 0);
+                    float sides = (area.size.y - (layer.transform.localScale.z*10))/2;
+                    layer.transform.localPosition += new Vector3(0, Randomization.RandomFloat(-sides, sides), 0);
+                } 
+                break;
+            default:
+                Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
+                break;
+        }
+
+        // layer.transform.localScale = GenerateDimensions(max.x - min.x, max.y - min.y) / 10;
+
+        // switch (direction)
+        // {
+        //     case Directions.North:
+        //         layer.transform.localPosition = new Vector3(min.x + layer.transform.localScale.x*5, max.y + layer.transform.localScale.z*5, 0.14f);
+        //         layer.transform.localPosition += new Vector3(GeneratePosition(max.x - min.x - layer.transform.localScale.x*10), 0, 0.14f);
+        //         break;
+        //     case Directions.East:
+        //         layer.transform.localPosition = new Vector3(max.x + layer.transform.localScale.x*5, min.y + layer.transform.localScale.z*5, 0.14f);
+        //         layer.transform.localPosition += new Vector3(0, GeneratePosition(max.y - min.y - layer.transform.localScale.z*10), 0.14f);
+        //         break;
+        //     case Directions.South:
+        //         layer.transform.localPosition = new Vector3(min.x + layer.transform.localScale.x*5, min.y - layer.transform.localScale.z*5, 0.14f);
+        //         layer.transform.localPosition += new Vector3(GeneratePosition(max.x - min.x - layer.transform.localScale.x*10), 0, 0.14f);
+        //         break;
+        //     case Directions.West:
+        //         layer.transform.localPosition = new Vector3(min.x - layer.transform.localScale.x*5, min.y + layer.transform.localScale.z*5, 0.14f);
+        //         layer.transform.localPosition += new Vector3(0, GeneratePosition(max.y - min.y - layer.transform.localScale.z*10), 0.14f);
+        //         break;
+        //     default:
+        //         Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
+        //         break;
+        // }
 
         layer.GetComponent<MeshRenderer>().material.color = GenerateColor();
 
@@ -151,7 +244,7 @@ public class LayerSpawner : MonoBehaviour
                 // } else {
                 //     md.direction = new Vector3(-1, 0, 0);
                 // }
-                md.direction = new Vector3(-1, 0, 0);
+                md.direction = new Vector3(1, 0, 0);
                 break;
             case Directions.South:
                 md.direction = new Vector3(0, 1, 0);
@@ -162,7 +255,7 @@ public class LayerSpawner : MonoBehaviour
                 // } else {
                 //     md.direction = new Vector3(1, 0, 0);
                 // }
-                md.direction = new Vector3(1, 0, 0);
+                md.direction = new Vector3(-1, 0, 0);
                 break;
             default:
                 Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
@@ -170,16 +263,24 @@ public class LayerSpawner : MonoBehaviour
         }
         md.enabled = false;
 
-        if (transform.name == "SideScreen" || transform.name == "Test") {
-            Vector3 tempPosition = layer.transform.localPosition;
-            layer.transform.localPosition = new Vector3(-tempPosition.z, tempPosition.y, tempPosition.x);
-        }
+        // if (transform.name == "SideScreen" || transform.name == "Test") {
+        //     Vector3 tempPosition = layer.transform.localPosition;
+        //     layer.transform.localPosition = new Vector3(-tempPosition.z, tempPosition.y, tempPosition.x);
+        // }
 
         return layer;
     }
 
     private Vector3 GenerateDimensions(float xMax, float yMax) {
         return new Vector3(Randomization.RandomFloat(0.01f, xMax), 1, Randomization.RandomFloat(0.01f, yMax));
+    }
+
+    private Vector3 GenerateDimensions (BoxCollider area) {
+        if (transform.name == "SideScreen" || transform.name == "Test") {
+            // Debug.Log(area.size);
+            return new Vector3(Randomization.RandomFloat(0.01f, area.size.z), 1, Randomization.RandomFloat(0.01f, area.size.y));
+        }
+        return new Vector3(Randomization.RandomFloat(0.01f, area.size.x), 1, Randomization.RandomFloat(0.01f, area.size.y));
     }
 
     private float GeneratePosition(float max) {

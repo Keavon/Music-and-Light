@@ -16,7 +16,7 @@ public class MoveBack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Transform parent = transform.parent;
+        Transform parent = transform.parent.parent;
         if (parent.name == "SideScreen" || parent.name == "Test") {
             transform.localPosition += new Vector3(speed * Time.deltaTime, 0, 0);
         } else {

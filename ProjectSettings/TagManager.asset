@@ -9,6 +9,11 @@ TagManager:
   - Wall
   - WallContainer
   - Layer
+  - SpawnZone
+  - SpawnZoneNorth
+  - SpawnZoneSouth
+  - SpawnZoneEast
+  - SpawnZoneWest
   layers:
   - Default
   - TransparentFX

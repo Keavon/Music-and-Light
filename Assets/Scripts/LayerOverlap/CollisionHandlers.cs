@@ -17,10 +17,14 @@ public class CollisionHandlers : MonoBehaviour
                 StopMoving(self);
             }
         } else if (other.tag == "Window") {
+            if (!overlap.EnteredScreen) {
+                overlap.EnteredScreen = true;
+            }
             StopMoving(self);
         } else if (other.tag == "Layer") {
             // Ignore
         } else if (other.tag == "Wall") {
+            Debug.Log("Destroy");
             GameObject.Destroy(self);
         } else {
             Debug.LogError ("Error - forgot to tag one of the colliders: " + other.name);

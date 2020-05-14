@@ -62,7 +62,7 @@ public class MoveDirection : MonoBehaviour
             rd = gameObject.GetComponent<Rigidbody>();
         }
         rd.constraints = rd.constraints | RigidbodyConstraints.FreezePosition;
-        Debug.Log ("disable");
+        // Debug.Log ("disable");
     }
 
     void OnEnable () {
@@ -79,10 +79,10 @@ public class MoveDirection : MonoBehaviour
             rd = gameObject.GetComponent<Rigidbody>();
         }
         if (numBounces < maxBounces) {
-            Debug.Log(rd);
+            // Debug.Log(rd);
             rd.AddForce(-direction * localSpeed * globalSpeed * 1.5f, ForceMode.Force);
             curForce += (-direction * localSpeed * globalSpeed * 1.5f);
-            Debug.Log ("b");
+            // Debug.Log ("b");
         }
         else {
             //rd.AddForce(-curForce, ForceMode.Force);
