@@ -29,6 +29,9 @@ public class CollisionHandlers : MonoBehaviour
 
     private void StopMoving (GameObject self) {
         MoveDirection moveDirection = self.GetComponent<MoveDirection>();
-        moveDirection.enabled = false;
+        moveDirection.Bounce();
+        if (moveDirection.NumBounces >= moveDirection.MaxBounces) {
+            //moveDirection.enabled = false;
+        }
     }
 }

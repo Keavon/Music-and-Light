@@ -144,21 +144,23 @@ public class LayerSpawner : MonoBehaviour
                 md.direction = new Vector3(0, -1, 0);
                 break;
             case Directions.East:
-                if (name == "SideScreen" || name == "Test") {
-                    md.direction = new Vector3(0, 0, -1);
-                } else {
-                    md.direction = new Vector3(-1, 0, 0);
-                }
+                // if (name == "SideScreen" || name == "Test") {
+                //     md.direction = new Vector3(0, 0, -1);
+                // } else {
+                //     md.direction = new Vector3(-1, 0, 0);
+                // }
+                md.direction = new Vector3(-1, 0, 0);
                 break;
             case Directions.South:
                 md.direction = new Vector3(0, 1, 0);
                 break;
             case Directions.West:
-                if (name == "SideScreen" || name == "Test") {
-                    md.direction = new Vector3(0, 0, 1);
-                } else {
-                    md.direction = new Vector3(1, 0, 0);
-                }
+                // if (name == "SideScreen" || name == "Test") {
+                //     md.direction = new Vector3(0, 0, 1);
+                // } else {
+                //     md.direction = new Vector3(1, 0, 0);
+                // }
+                md.direction = new Vector3(1, 0, 0);
                 break;
             default:
                 Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
