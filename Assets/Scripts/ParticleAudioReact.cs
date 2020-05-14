@@ -13,8 +13,8 @@ public class ParticleAudioReact : MonoBehaviour
     public GameObject particleSubspawn;
     public List<ParticleCollisionEvent> collisionEvents;
     public float velocityFactor = 1.0f;
-    public float minStartSize = 0.5f;
-    public float maxStartSize = 7.0f;
+    private float minStartSize = 0.05f;
+    private float maxStartSize = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,15 +38,16 @@ public class ParticleAudioReact : MonoBehaviour
         {
             newPart = mParticles[i];
             newPart.startColor = newColor;
-            newPart.startSize = Random.Range(0.05f * (0.5f + audioInfluence * audioInfluence) , 0.15f * (0.5f + audioInfluence));
-            if (newPart.startSize < minStartSize)
-            {
-                newPart.startSize = minStartSize;
-            }
-            if (newPart.startSize > maxStartSize)
-            {
-                newPart.startSize = maxStartSize;
-            }
+            newPart.startSize = Random.Range(minStartSize, maxStartSize);
+            //Debug.Log("Start Size: " + newPart.startSize);
+            //if (newPart.startSize < minStartSize)
+            //{
+            //    newPart.startSize = minStartSize;
+            //}
+            //if (newPart.startSize > maxStartSize)
+            //{
+            //    newPart.startSize = maxStartSize;
+            //}
             Vector3 addVelDir = mParticles[i].velocity.normalized;
             //newPart.velocity -= 0.5f * addVelDir * Time.deltaTime;
             //if (audioInfluence > 0.8)
@@ -66,7 +67,7 @@ public class ParticleAudioReact : MonoBehaviour
             }
             //if (newPart.velocity.magnitude > maxSpeed)
             //    newPart.velocity = maxSpeed * addVelDir;
-            Debug.Log("Current speed: " + newPart.velocity.magnitude);
+            //Debug.Log("Current speed: " + newPart.velocity.magnitude);
             mParticles[i] = newPart;
         }
         pSys.SetParticles(mParticles, nump);
