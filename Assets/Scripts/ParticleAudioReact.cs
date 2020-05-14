@@ -56,7 +56,14 @@ public class ParticleAudioReact : MonoBehaviour
             //}
             newPart.velocity = addVelDir * baseVelocity * (audioInfluence * velocityFactor);
             if (newPart.velocity.magnitude < minSpeed)
+            {
                 newPart.velocity = minSpeed * addVelDir;
+            }
+
+            if (newPart.velocity.magnitude > maxSpeed)
+            {
+                newPart.velocity = Random.Range(maxSpeed, maxSpeed + 4.0f) * addVelDir;
+            }
             //if (newPart.velocity.magnitude > maxSpeed)
             //    newPart.velocity = maxSpeed * addVelDir;
             Debug.Log("Current speed: " + newPart.velocity.magnitude);
