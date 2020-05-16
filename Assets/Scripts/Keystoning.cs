@@ -46,8 +46,6 @@ public class Keystoning : MonoBehaviour {
 	GameObject keystoneDots;
 	GameObject featherDots;
 
-	// TODO: Add GUI to control camera X/Y/Z and heading/pitch/roll and zoom. Eventually add feathering and bilinear interpolation.
-
 	void Start() {
 		uiCamera = transform.parent.Find("Management Window Camera").GetComponent<Camera>();
 		mesh = GetComponent<MeshFilter>().mesh;

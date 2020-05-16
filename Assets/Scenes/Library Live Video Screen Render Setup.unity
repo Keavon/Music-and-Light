@@ -1390,6 +1390,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keystonedProjector: {fileID: 1934663002557445454, guid: 8942b5b89b0aaab48b2bb84e8fd340b8,
     type: 3}
+  virtualProjectorCameras:
+  - {fileID: 83686572}
+  - {fileID: 1719387354}
+  - {fileID: 229295964}
+  virtualProjectorCamerasParent: {fileID: 2078049557}
+  camMoveSpeed: 1
+  camRotateSpeed: 10
+  camRollSpeed: 10
+  camZoomSpeed: 10
 --- !u!1 &1431958973
 GameObject:
   m_ObjectHideFlags: 0
