@@ -2816,7 +2816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 912352868}
   m_Layer: 0
-  m_Name: Render Texture Cameras
+  m_Name: Render Texture Cameras BOXES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4276,7 +4276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1363570550}
   m_Layer: 0
-  m_Name: ScreensWithColliders
+  m_Name: ScreensWithColliders BOXES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

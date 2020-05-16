@@ -1104,8 +1104,6 @@ MonoBehaviour:
   audioInfluence: 0
   particleSubspawn: {fileID: 244092459}
   velocityFactor: 1
-  minStartSize: 0.1
-  maxStartSize: 7
 --- !u!114 &589004219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6433,7 +6431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 912352868}
   m_Layer: 0
-  m_Name: Render Texture Cameras
+  m_Name: Render Texture Cameras PARTICLES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11836,8 +11834,6 @@ MonoBehaviour:
   audioInfluence: 0
   particleSubspawn: {fileID: 403333332}
   velocityFactor: 1
-  minStartSize: 0.2
-  maxStartSize: 7
 --- !u!1 &1199330239
 GameObject:
   m_ObjectHideFlags: 0
@@ -12367,7 +12363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1363570550}
   m_Layer: 0
-  m_Name: ScreensWithColliders
+  m_Name: ScreensWithColliders PARTICLES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12490,8 +12486,6 @@ MonoBehaviour:
   audioInfluence: 0
   particleSubspawn: {fileID: 471905492}
   velocityFactor: 1
-  minStartSize: 0.1
-  maxStartSize: 7
 --- !u!114 &1462768663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17281,8 +17275,6 @@ MonoBehaviour:
   audioInfluence: 0
   particleSubspawn: {fileID: 591220857}
   velocityFactor: 1.19
-  minStartSize: 0.2
-  maxStartSize: 7
 --- !u!114 &1500274715
 MonoBehaviour:
   m_ObjectHideFlags: 0
