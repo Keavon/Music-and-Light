@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OverlapShapeData 
+public class OverlapShapeData :MonoBehaviour 
 {
 
     private bool enteredScreen = false;
