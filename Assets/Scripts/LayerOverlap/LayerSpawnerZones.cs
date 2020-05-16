@@ -224,7 +224,10 @@ public class LayerSpawnerZones : MonoBehaviour
         //         break;
         // }
 
-        layer.GetComponent<MeshRenderer>().material.color = GenerateColor();
+        Color c = GenerateColor();
+        Material m = layer.GetComponent<MeshRenderer>().material;
+        SetColor(c, m);
+
 
         layer.AddComponent<CollisionHandlers>();
         layer.AddComponent<OverlapShapeData>();
@@ -295,6 +298,12 @@ public class LayerSpawnerZones : MonoBehaviour
         layerPrefab = l;
     }
 
+    private void SetColor(Color c, Material m) {
+        m.color = c;
+        m.EnableKeyword("_EMISSION");
+        m.SetColor("_EmissionColor", c);
+    }
+
     public void StartLayer(Directions direction) {
         GameObject go = layersToSpawn[(int)direction];
         go.GetComponent<MoveDirection>().enabled = true;
@@ -306,7 +315,7 @@ public class LayerSpawnerZones : MonoBehaviour
 
     public void StartLayer(Directions direction, Color c) {
         GameObject go = layersToSpawn[(int)direction];
-        go.GetComponent<MeshRenderer>().material.color = c;
+        SetColor(c, go.GetComponent<MeshRenderer>().material);
         go.GetComponent<MoveDirection>().enabled = true;
         go.GetComponent<MoveBack>().enabled = true;
         go.GetComponent<FadeOut>().enabled = true;
@@ -324,7 +333,7 @@ public class LayerSpawnerZones : MonoBehaviour
 
     public void StartLayer(Directions direction, Color c, float speed) {
         GameObject go = layersToSpawn[(int)direction];
-        go.GetComponent<MeshRenderer>().material.color = c;
+        SetColor(c, go.GetComponent<MeshRenderer>().material);
         go.GetComponent<MoveDirection>().enabled = true;
         go.GetComponent<MoveDirection>().localSpeed = speed;
         go.GetComponent<MoveBack>().enabled = true;
