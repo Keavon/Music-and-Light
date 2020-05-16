@@ -49,10 +49,15 @@ public abstract class EffectGroup : MonoBehaviour
     /// </summary>
     /// <param name="go">Object to add.</param>
     public virtual void AddObjectToGroup(GameObject go) {
-        if (go.transform.childCount > 0) {
-            groupObjects.Add (go.transform.GetChild(0).gameObject);
-        } else {
-            groupObjects.Add (go);
+        try {
+            if (go.transform.childCount > 0) {
+                groupObjects.Add (go.transform.GetChild(0).gameObject);
+            } else {
+                groupObjects.Add (go);
+            }
+        }
+        catch (System.NullReferenceException e) {
+            // TODO: Fix this, John
         }
     }
 
