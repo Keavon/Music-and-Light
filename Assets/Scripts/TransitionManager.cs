@@ -8,21 +8,28 @@ public class TransitionManager : MonoBehaviour
     public Material materialMiddle;
     public Material materialBottom;
     public Material materialSide;
-
+    public EffectRenderSetup[] effectsSetup;
     [Range(0,1)]
     public float fadeFactor;
-
-    int directionMult = 1;
-    bool transitioning;
-
-
-    // Start is called before the first frame update
-    void Start()
+    [System.Serializable]
+    public struct EffectRenderSetup
     {
-        
+        public RenderTexture top;
+        public RenderTexture middle;
+        public RenderTexture bottom;
+        public RenderTexture side;
+        public GameObject effectRoot;
     }
 
-    // Update is called once per frame
+    int directionMult = 1;
+    bool transitioning = false;
+
+    void Start()
+    {
+        ChooseNextEffect(true, 0);
+        ChooseNextEffect(false, 1);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -56,5 +63,21 @@ public class TransitionManager : MonoBehaviour
         materialMiddle.SetFloat("_Factor", fadeFactor);
         materialBottom.SetFloat("_Factor", fadeFactor);
         materialSide.SetFloat("_Factor", fadeFactor);
+        if (fadeFactor == 0 || fadeFactor == 1)
+        {
+            if (Input.GetKeyDown(KeyCode.F1)) ChooseNextEffect(fadeFactor == 1, 0);
+            if (Input.GetKeyDown(KeyCode.F2)) ChooseNextEffect(fadeFactor == 1, 1);
+            if (Input.GetKeyDown(KeyCode.F3)) ChooseNextEffect(fadeFactor == 1, 2);
+        }
+    }
+
+    void ChooseNextEffect(bool aOrB, int choiceIndex)
+    {
+        EffectRenderSetup curRenderSetup = effectsSetup[choiceIndex];
+        string texture = aOrB ? "_TextureA" : "_TextureB";
+        materialTop.SetTexture(texture, curRenderSetup.top);
+        materialMiddle.SetTexture(texture, curRenderSetup.middle);
+        materialBottom.SetTexture(texture, curRenderSetup.bottom);
+        materialSide.SetTexture(texture, curRenderSetup.side);
     }
 }

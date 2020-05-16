@@ -263,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 18751165}
   m_Layer: 0
-  m_Name: BoxEffect +1500
+  m_Name: BOXES +1500
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,7 +623,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 1a1b6ed83f4a8644c8d26df1006623a9, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 37ed46efc47a9ba4db8e18eed455db1d, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -1385,7 +1385,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 5d39ecfacba91cb439fa2ad6375f69be, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 34bae8b17f682da48b67ac34e07f2d01, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -2354,7 +2354,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 474c9286b02d6944f972c449db1a1e7c, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: aed1c797ff36ddb4386cea62798ee658, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -15519,7 +15519,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: ca13deedbb581384c927c5d2c9ee417c, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 292f830ffdf413748a0b026dc30625bc, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -26490,7 +26490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1702903562}
   m_Layer: 0
-  m_Name: WaterFloodEffect +1000
+  m_Name: WATER FLOOD +1000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27062,6 +27062,22 @@ MonoBehaviour:
   materialMiddle: {fileID: 2100000, guid: ad5bb8a8b980ba245944343e5617d95f, type: 2}
   materialBottom: {fileID: 2100000, guid: 8ca24280cc4320f44b1be2dc66e4fac7, type: 2}
   materialSide: {fileID: 2100000, guid: 42107f0f3249f2545bda119060dc95d6, type: 2}
+  effectsSetup:
+  - top: {fileID: 8400000, guid: 292f830ffdf413748a0b026dc30625bc, type: 2}
+    middle: {fileID: 8400000, guid: 37ed46efc47a9ba4db8e18eed455db1d, type: 2}
+    bottom: {fileID: 8400000, guid: 34bae8b17f682da48b67ac34e07f2d01, type: 2}
+    side: {fileID: 8400000, guid: aed1c797ff36ddb4386cea62798ee658, type: 2}
+    effectRoot: {fileID: 2062320017}
+  - top: {fileID: 8400000, guid: 75d4baeb96bcef3478e1449d222840de, type: 2}
+    middle: {fileID: 8400000, guid: f1fffcf0c8c5454418eeddc5200664ac, type: 2}
+    bottom: {fileID: 8400000, guid: 907a40eb4b3860b41b442599bc2c8ac0, type: 2}
+    side: {fileID: 8400000, guid: 7ef7b2080e4e4824f8d2d192a74cfa78, type: 2}
+    effectRoot: {fileID: 1702903561}
+  - top: {fileID: 8400000, guid: ca13deedbb581384c927c5d2c9ee417c, type: 2}
+    middle: {fileID: 8400000, guid: 1a1b6ed83f4a8644c8d26df1006623a9, type: 2}
+    bottom: {fileID: 8400000, guid: 5d39ecfacba91cb439fa2ad6375f69be, type: 2}
+    side: {fileID: 8400000, guid: 474c9286b02d6944f972c449db1a1e7c, type: 2}
+    effectRoot: {fileID: 18751164}
   fadeFactor: 0
 --- !u!4 &1935016344
 Transform:
@@ -27874,7 +27890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2062320018}
   m_Layer: 0
-  m_Name: BallBounceEffect +500
+  m_Name: PARTICLES +500
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

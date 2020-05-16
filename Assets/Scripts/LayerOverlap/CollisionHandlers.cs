@@ -24,10 +24,10 @@ public class CollisionHandlers : MonoBehaviour
         } else if (other.tag == "Layer") {
             // Ignore
         } else if (other.tag == "Wall") {
-            Debug.Log("Destroy");
+            //Debug.Log("Destroy");
             GameObject.Destroy(self);
         } else {
-            Debug.LogError ("Error - forgot to tag one of the colliders: " + other.name);
+            //Debug.LogError ("Error - forgot to tag one of the colliders: " + other.name);
         }
     }
 
