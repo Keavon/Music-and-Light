@@ -400,12 +400,12 @@ public class CubeCanvas : MonoBehaviour
     {
         if (list == null)
         {
-            Debug.LogError("list null in min index");
+            //Debug.LogError("list null in min index");
         }
 
         if (list.Length == 0)
         {
-            Debug.LogError("list empty in min index");
+           //Debug.LogError("list empty in min index");
         }
 
         int minIndex = 0;

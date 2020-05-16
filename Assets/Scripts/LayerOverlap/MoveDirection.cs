@@ -36,7 +36,7 @@ public class MoveDirection : MonoBehaviour
     {
         curForce = new Vector3();
         rd = gameObject.GetComponent<Rigidbody>();
-        Debug.Log (rd);
+        //Debug.Log (rd);
         rd.AddForce(direction * localSpeed * globalSpeed, ForceMode.Force);
         curForce += (direction * localSpeed * globalSpeed);
     }

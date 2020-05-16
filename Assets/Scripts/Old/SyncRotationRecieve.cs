@@ -27,7 +27,7 @@ public class SyncRotationRecieve : MonoBehaviour
     void Update()
     {
         if (rotationAmounts.Count != timeToRotation.Count) {
-            Debug.LogWarning ("rotationAmounts.Count != timeToRotation.Count -- " + rotationAmounts.Count + " != " + timeToRotation.Count);
+           // Debug.LogWarning ("rotationAmounts.Count != timeToRotation.Count -- " + rotationAmounts.Count + " != " + timeToRotation.Count);
             return;
         }
         for (int i = 0; i < timeToRotation.Count; i++) {

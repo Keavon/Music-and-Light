@@ -17,7 +17,7 @@ public class FadeOut : MonoBehaviour
     void Update()
     {
         Color c = meshRenderer.material.color;
-        Debug.Log (c.a + " " + c.a * .75f);
+        //Debug.Log (c.a + " " + c.a * .75f);
         // c.a *= 0.75f * Time.deltaTime;
         // meshRenderer.material.color = c;
 

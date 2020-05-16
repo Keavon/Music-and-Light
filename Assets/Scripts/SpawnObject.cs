@@ -86,7 +86,7 @@ public class SpawnObject : MonoBehaviour
         Vector3 dir;
 
         if (objectToSpawn > spawnableObjects.Count) {
-            Debug.LogWarning ("Spawn object out of range: objectToSpawn - " + objectToSpawn + "; spawnableObjects.Count - " + spawnableObjects.Count);
+            //Debug.LogWarning ("Spawn object out of range: objectToSpawn - " + objectToSpawn + "; spawnableObjects.Count - " + spawnableObjects.Count);
             return;
         }
 

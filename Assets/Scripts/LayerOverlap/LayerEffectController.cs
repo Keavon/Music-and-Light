@@ -19,7 +19,7 @@ public class LayerEffectController : MonoBehaviour
     {
 
         if (layerPrefab == null) {
-            Debug.LogError("Forgot to set layer prefab");
+            //Debug.LogError("Forgot to set layer prefab");
         }
 
         if (autoFind) {

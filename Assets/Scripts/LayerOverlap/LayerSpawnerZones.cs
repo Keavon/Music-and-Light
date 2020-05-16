@@ -42,7 +42,7 @@ public class LayerSpawnerZones : MonoBehaviour
         List<Transform> temp = transform.GetComponentsInChildren<Transform>().Where(t => t.tag == "Wall").ToList();
 
         if (temp.Count == 0) {
-            Debug.LogError("No walls, did you forget to tag them?");
+           // Debug.LogError("No walls, did you forget to tag them?");
         }
 
         if (transform.name == "SideScreen" || transform.name == "Test") {
@@ -133,7 +133,7 @@ public class LayerSpawnerZones : MonoBehaviour
                 selectedZone = szWest[Randomization.RandomInt(0, szWest.Count)];
                 break;
             default:
-                Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
+                //Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
                 break;
         }
 
@@ -195,7 +195,7 @@ public class LayerSpawnerZones : MonoBehaviour
                 } 
                 break;
             default:
-                Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
+                //Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
                 break;
         }
 
@@ -261,7 +261,7 @@ public class LayerSpawnerZones : MonoBehaviour
                 md.direction = new Vector3(-1, 0, 0);
                 break;
             default:
-                Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
+                //Debug.LogError("Invalid Direction: Valid Directions are North (1), East (2), South (3), West(4)");
                 break;
         }
         md.enabled = false;
