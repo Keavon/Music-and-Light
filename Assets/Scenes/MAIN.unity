@@ -1291,15 +1291,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.792084, y: 0.14885, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &244092459 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4012538200318327169, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
-    type: 3}
-  m_PrefabInstance: {fileID: 310065545}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &244092460 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4012538200318327168, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 310065545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &244092462 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4012538200318327170, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
     type: 3}
   m_PrefabInstance: {fileID: 310065545}
   m_PrefabAsset: {fileID: 0}
@@ -2077,27 +2077,27 @@ Transform:
   m_Father: {fileID: 508945731}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &403333332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4012538200318327169, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
-    type: 3}
-  m_PrefabInstance: {fileID: 4012538199915288917}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &403333333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4012538200318327168, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
     type: 3}
   m_PrefabInstance: {fileID: 4012538199915288917}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &471905492 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4012538200318327169, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
+--- !u!198 &403333335 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4012538200318327170, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
     type: 3}
-  m_PrefabInstance: {fileID: 1777553793}
+  m_PrefabInstance: {fileID: 4012538199915288917}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &471905493 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4012538200318327168, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 1777553793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &471905495 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4012538200318327170, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
     type: 3}
   m_PrefabInstance: {fileID: 1777553793}
   m_PrefabAsset: {fileID: 0}
@@ -2457,10 +2457,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
-  reactPercentage: 0
-  audioThresh: 0
-  audioClampMax: 0
-  particleSubspawn: {fileID: 244092459}
+  reactPercentage: 0.74
+  audioThresh: 0.25
+  audioClampMax: 0.68
+  baseVelocity: 2
+  particleSubspawn: {fileID: 244092462}
   velocityFactor: 1
 --- !u!114 &589004219
 MonoBehaviour:
@@ -2799,7 +2800,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.06
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -7200,15 +7201,15 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &591220857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4012538200318327169, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
-    type: 3}
-  m_PrefabInstance: {fileID: 2003703046}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &591220858 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4012538200318327168, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 2003703046}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &591220860 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4012538200318327170, guid: cc8909fb67f7b6644a9d53e8ba8b93ba,
     type: 3}
   m_PrefabInstance: {fileID: 2003703046}
   m_PrefabAsset: {fileID: 0}
@@ -9247,7 +9248,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.06986954, y: 3.471e-41, z: 3.471e-41, w: 13.352654}
+  m_BoundingSphereOverride: {x: 0.0000006517555, y: 2.4299e-41, z: 2.4299e-41, w: 498.17172}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -10384,7 +10385,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.06
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10700,7 +10701,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 3
+    maxNumParticles: 5
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -14822,7 +14823,8 @@ MonoBehaviour:
   reactPercentage: 0.74
   audioThresh: 0.25
   audioClampMax: 0.68
-  particleSubspawn: {fileID: 403333332}
+  baseVelocity: 2
+  particleSubspawn: {fileID: 403333335}
   velocityFactor: 1
 --- !u!1 &1156558674
 GameObject:
@@ -16383,10 +16385,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
-  reactPercentage: 0
-  audioThresh: 0
-  audioClampMax: 0
-  particleSubspawn: {fileID: 471905492}
+  reactPercentage: 0.74
+  audioThresh: 0.25
+  audioClampMax: 0.68
+  baseVelocity: 2
+  particleSubspawn: {fileID: 471905495}
   velocityFactor: 1
 --- !u!114 &1462768663
 MonoBehaviour:
@@ -16556,7 +16559,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 20
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -16725,7 +16728,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.15
+      scalar: 0.06
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -21219,11 +21222,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
-  reactPercentage: 0
-  audioThresh: 0
-  audioClampMax: 0
-  particleSubspawn: {fileID: 591220857}
-  velocityFactor: 1.19
+  reactPercentage: 0.74
+  audioThresh: 0.25
+  audioClampMax: 0.68
+  baseVelocity: 2
+  particleSubspawn: {fileID: 591220860}
+  velocityFactor: 1
 --- !u!114 &1500274715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21445,7 +21449,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.61
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -21561,7 +21565,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.06
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -21877,7 +21881,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 3
+    maxNumParticles: 5
     size3D: 0
     rotation3D: 0
     gravityModifier:

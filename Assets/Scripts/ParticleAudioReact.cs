@@ -18,7 +18,7 @@ public class ParticleAudioReact : MonoBehaviour
     
     private ParticleSystem pSys;
     ParticleSystem.Particle[] mParticles;
-    public GameObject particleSubspawn;
+    public ParticleSystem particleSubspawn;
     public List<ParticleCollisionEvent> collisionEvents;
     [Range(0.0f, 20.0f)]
     public float velocityFactor = 8.0f;
@@ -97,7 +97,9 @@ public class ParticleAudioReact : MonoBehaviour
             Vector3 collisionHitLoc = collisionEvents[i].intersection;
             if (audioInfluence > 0.001)
             {
-                Instantiate(particleSubspawn, collisionHitLoc, Quaternion.identity);
+                //Instantiate(particleSubspawn, collisionHitLoc, Quaternion.identity);
+                particleSubspawn.transform.position = collisionHitLoc;
+                particleSubspawn.Play();
             }
             i++;
         }
