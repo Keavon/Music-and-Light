@@ -5,6 +5,13 @@ using UnityEngine;
 public class ParticleAudioReact : MonoBehaviour
 {
     public float audioInfluence = 0.0f;
+    [Range (0.0f, 1.0f)]
+    public float reactPercentage;
+    [Range(0.0f, 1.0f)]
+    public float audioThresh;
+    [Range(0.0f, 10.0f)]
+    public float audioClampMax;
+
     float minSpeed = 0.01f;
     float maxSpeed = 4.0f;
     float baseVelocity = 2.0f;
@@ -12,7 +19,8 @@ public class ParticleAudioReact : MonoBehaviour
     ParticleSystem.Particle[] mParticles;
     public GameObject particleSubspawn;
     public List<ParticleCollisionEvent> collisionEvents;
-    public float velocityFactor = 1.0f;
+    [Range(0.0f, 20.0f)]
+    public float velocityFactor = 8.0f;
     private float minStartSize = 0.05f;
     private float maxStartSize = 0.1f;
     // Start is called before the first frame update
@@ -26,7 +34,7 @@ public class ParticleAudioReact : MonoBehaviour
     void Update()
     {
         var main = pSys.main;
-        audioInfluence = Mathf.Clamp(Lasp.MasterInput.GetPeakLevel(Lasp.FilterType.Bypass) * 2,0,1);
+        audioInfluence = Mathf.Clamp(Lasp.MasterInput.GetPeakLevel(Lasp.FilterType.LowPass) * 4, 0, audioClampMax);
         if (mParticles == null)
         {
             mParticles = new ParticleSystem.Particle[pSys.main.maxParticles];
@@ -36,6 +44,7 @@ public class ParticleAudioReact : MonoBehaviour
         Color newColor = new Color(Mathf.Clamp(audioInfluence - Random.Range(0.2f,0.5f),0.0f,1.0f), Mathf.Clamp(audioInfluence - Random.Range(0.2f, 0.5f), 0.0f, 1.0f), audioInfluence);
         for (int i = 0; i < nump; i++)
         {
+            if (Random.Range(0.1f, 1.0f) < reactPercentage) continue;
             newPart = mParticles[i];
             newPart.startColor = newColor;
             newPart.startSize = Random.Range(minStartSize, maxStartSize);
@@ -55,7 +64,19 @@ public class ParticleAudioReact : MonoBehaviour
             //    newPart.velocity += 0.8f *addVelDir * Time.deltaTime;
             //    //Debug.Log("Adding Velocity");
             //}
-            newPart.velocity = addVelDir * baseVelocity * (audioInfluence * velocityFactor);
+            if (audioInfluence > audioThresh)
+                newPart.velocity = addVelDir * baseVelocity * (audioInfluence * velocityFactor);
+            float mag = Vector3.Magnitude(newPart.velocity);
+            mag *= (1 - (0.16f * audioInfluence));
+            
+            if (i % 3 == 0)
+            {
+                newPart.velocity = Vector3.Normalize(newPart.velocity) * mag * mag / 2;
+            }
+            else
+            {
+                newPart.velocity = Vector3.Normalize(newPart.velocity) * mag;
+            }   
             if (newPart.velocity.magnitude < minSpeed)
             {
                 newPart.velocity = minSpeed * addVelDir;

@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureB:
-        m_Texture: {fileID: 8400000, guid: 1a1b6ed83f4a8644c8d26df1006623a9, type: 2}
+        m_Texture: {fileID: 8400000, guid: f1fffcf0c8c5454418eeddc5200664ac, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -68,7 +68,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Factor: 1
+    - _Factor: 0
     - _FadeFactor: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
