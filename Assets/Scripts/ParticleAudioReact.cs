@@ -12,9 +12,10 @@ public class ParticleAudioReact : MonoBehaviour
     [Range(0.0f, 10.0f)]
     public float audioClampMax;
 
+    public float baseVelocity = 2.0f;
     float minSpeed = 0.01f;
     float maxSpeed = 4.0f;
-    float baseVelocity = 2.0f;
+    
     private ParticleSystem pSys;
     ParticleSystem.Particle[] mParticles;
     public GameObject particleSubspawn;
@@ -31,7 +32,7 @@ public class ParticleAudioReact : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         var main = pSys.main;
         audioInfluence = Mathf.Clamp(Lasp.MasterInput.GetPeakLevel(Lasp.FilterType.LowPass) * 4, 0, audioClampMax);
@@ -41,7 +42,7 @@ public class ParticleAudioReact : MonoBehaviour
         }
         int nump = pSys.GetParticles(mParticles);
         ParticleSystem.Particle newPart;
-        Color newColor = new Color(Mathf.Clamp(audioInfluence - Random.Range(0.2f,0.5f),0.0f,1.0f), Mathf.Clamp(audioInfluence - Random.Range(0.2f, 0.5f), 0.0f, 1.0f), audioInfluence);
+        Color newColor = new Color(Random.Range(audioInfluence,1.0f)/*Mathf.Clamp(audioInfluence/2.0f + audioInfluence,0,1)*/, Random.Range(0.5f, 0.7f), audioInfluence + Random.Range(0.0f, (1-audioClampMax)));
         for (int i = 0; i < nump; i++)
         {
             if (Random.Range(0.1f, 1.0f) < reactPercentage) continue;
@@ -49,14 +50,6 @@ public class ParticleAudioReact : MonoBehaviour
             newPart.startColor = newColor;
             newPart.startSize = Random.Range(minStartSize, maxStartSize);
             //Debug.Log("Start Size: " + newPart.startSize);
-            //if (newPart.startSize < minStartSize)
-            //{
-            //    newPart.startSize = minStartSize;
-            //}
-            //if (newPart.startSize > maxStartSize)
-            //{
-            //    newPart.startSize = maxStartSize;
-            //}
             Vector3 addVelDir = mParticles[i].velocity.normalized;
             //newPart.velocity -= 0.5f * addVelDir * Time.deltaTime;
             //if (audioInfluence > 0.8)
