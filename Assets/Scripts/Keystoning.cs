@@ -97,6 +97,10 @@ public class Keystoning : MonoBehaviour {
 		// Set up default virtual projector and output display number
 		cam.targetDisplay = virtualProjectorCameraNumber;
 		mat.mainTexture = virtualProjectorRenderTextures[virtualProjectorCameraNumber - 1];
+
+		for (int i = 1; i < Display.displays.Length; i++) {
+			Display.displays[i].Activate();
+		}
 	}
 
 	void Update() {
