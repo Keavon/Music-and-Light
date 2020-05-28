@@ -2457,6 +2457,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
+  reactPercentage: 0
+  audioThresh: 0
+  audioClampMax: 0
   particleSubspawn: {fileID: 244092459}
   velocityFactor: 1
 --- !u!114 &589004219
@@ -14816,6 +14819,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
+  reactPercentage: 0.74
+  audioThresh: 0.25
+  audioClampMax: 0.68
   particleSubspawn: {fileID: 403333332}
   velocityFactor: 1
 --- !u!1 &1156558674
@@ -16377,6 +16383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
+  reactPercentage: 0
+  audioThresh: 0
+  audioClampMax: 0
   particleSubspawn: {fileID: 471905492}
   velocityFactor: 1
 --- !u!114 &1462768663
@@ -21210,6 +21219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioInfluence: 0
+  reactPercentage: 0
+  audioThresh: 0
+  audioClampMax: 0
   particleSubspawn: {fileID: 591220857}
   velocityFactor: 1.19
 --- !u!114 &1500274715

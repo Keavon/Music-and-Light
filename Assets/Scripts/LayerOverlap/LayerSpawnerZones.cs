@@ -290,7 +290,7 @@ public class LayerSpawnerZones : MonoBehaviour
         return Randomization.RandomFloat(0, max);
     }
 
-    private Color GenerateColor () {
+    public Color GenerateColor () {
         return new Color(Randomization.RandomFloat(0, 1), Randomization.RandomFloat(0, 1), Randomization.RandomFloat(0, 1), 1);
     }
 
