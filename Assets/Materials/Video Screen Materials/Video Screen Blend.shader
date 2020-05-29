@@ -5,6 +5,8 @@
         _TextureA ("TextureA", 2D) = "white" {}
         _TextureB("TextureB", 2D) = "white" {}
         _Factor("Factor", Range(0, 1)) = 0
+        _BlendOverWithA("BlendOverWithA", Range(0, 1)) = 0
+        _BlendOverWithB("BlendOverWithB", Range(0, 1)) = 0
     }
     SubShader
     {
@@ -39,6 +41,8 @@
             sampler2D _TextureB;
             float4 _TextureB_ST;
             float1 _Factor;
+            float1 _BlendOverWithA;
+            float1 _BlendOverWithB;
 
             v2f vert (appdata v)
             {
@@ -54,8 +58,29 @@
                 // sample the texture
                 fixed4 colA = tex2D(_TextureA, i.uv);
                 fixed4 colB = tex2D(_TextureB, i.uv);
-                fixed4 col = colA * (1 - _Factor) + colB * _Factor;
-                // apply fog
+                
+                fixed4 col;
+
+                if (_BlendOverWithA < 0.01 && _BlendOverWithB < 0.01) {
+                    col = colA * (1 - _Factor) + colB * _Factor;
+                }
+                else if (_BlendOverWithA > 0.99) {
+                    if ((colA.r + colA.g + colA.b) < 0.01) {
+                        col = colB;
+                    }
+                    else {
+                        col = colA;
+                    }
+                }
+                else {
+                    if ((colB.r + colB.g + colB.b) < 0.01) {
+                        col = colA;
+                    }
+                    else {
+                        col = colB;
+                    }
+                }
+
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
             }

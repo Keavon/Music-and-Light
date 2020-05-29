@@ -9,6 +9,7 @@ public class TransitionManager : MonoBehaviour
     public Material materialBottom;
     public Material materialSide;
     public EffectRenderSetup[] effectsSetup;
+    public GameObject[] waterVideoPlayers;
     [Range(0,1)]
     public float fadeFactor;
     [System.Serializable]
@@ -19,6 +20,7 @@ public class TransitionManager : MonoBehaviour
         public RenderTexture bottom;
         public RenderTexture side;
         public GameObject effectRoot;
+        public bool effectBlendOverMode;
     }
 
     int directionMult = 1;
@@ -65,9 +67,20 @@ public class TransitionManager : MonoBehaviour
         materialSide.SetFloat("_Factor", fadeFactor);
         if (fadeFactor == 0 || fadeFactor == 1)
         {
-            if (Input.GetKeyDown(KeyCode.F1)) ChooseNextEffect(fadeFactor == 1, 0);
-            if (Input.GetKeyDown(KeyCode.F2)) ChooseNextEffect(fadeFactor == 1, 1);
-            if (Input.GetKeyDown(KeyCode.F3)) ChooseNextEffect(fadeFactor == 1, 2);
+            if (!Input.GetKey(KeyCode.LeftShift) && (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))) {
+                ChooseNextEffect(fadeFactor == 1, 0);
+            }
+            if (!Input.GetKey(KeyCode.LeftShift) && (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))) {
+                ChooseNextEffect(fadeFactor == 1, 1);
+
+                waterVideoPlayers[0].GetComponent<UnityEngine.Video.VideoPlayer>().frame = 0;
+                waterVideoPlayers[1].GetComponent<UnityEngine.Video.VideoPlayer>().frame = 0;
+                waterVideoPlayers[2].GetComponent<UnityEngine.Video.VideoPlayer>().frame = 0;
+                waterVideoPlayers[3].GetComponent<UnityEngine.Video.VideoPlayer>().frame = 0;
+            }
+            if (!Input.GetKey(KeyCode.LeftShift) && (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))) {
+                ChooseNextEffect(fadeFactor == 1, 2);
+            }
         }
     }
 
@@ -75,9 +88,29 @@ public class TransitionManager : MonoBehaviour
     {
         EffectRenderSetup curRenderSetup = effectsSetup[choiceIndex];
         string texture = aOrB ? "_TextureA" : "_TextureB";
+        string blendOverChannelCurrent = aOrB ? "_BlendOverWithA" : "_BlendOverWithB";
         materialTop.SetTexture(texture, curRenderSetup.top);
         materialMiddle.SetTexture(texture, curRenderSetup.middle);
         materialBottom.SetTexture(texture, curRenderSetup.bottom);
         materialSide.SetTexture(texture, curRenderSetup.side);
+
+        materialTop.SetFloat("_BlendOverWithA", 0.0f);
+        materialTop.SetFloat("_BlendOverWithB", 0.0f);
+
+        materialMiddle.SetFloat("_BlendOverWithA", 0.0f);
+        materialMiddle.SetFloat("_BlendOverWithB", 0.0f);
+
+        materialBottom.SetFloat("_BlendOverWithA", 0.0f);
+        materialBottom.SetFloat("_BlendOverWithB", 0.0f);
+
+        materialSide.SetFloat("_BlendOverWithA", 0.0f);
+        materialSide.SetFloat("_BlendOverWithB", 0.0f);
+
+        if (effectsSetup[choiceIndex].effectBlendOverMode) {
+            materialTop.SetFloat(blendOverChannelCurrent, 1.0f);
+            materialMiddle.SetFloat(blendOverChannelCurrent, 1.0f);
+            materialBottom.SetFloat(blendOverChannelCurrent, 1.0f);
+            materialSide.SetFloat(blendOverChannelCurrent, 1.0f);
+        }
     }
 }
