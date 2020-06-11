@@ -39,7 +39,7 @@ public class LayerEffectController : MonoBehaviour
     void Update()
     {
         audioInfluence = Mathf.Clamp(Lasp.MasterInput.GetPeakLevel(Lasp.FilterType.LowPass) * 8, 0, 3);
-        if (audioInfluence > 0.35)
+        if (audioInfluence > 0.85)
         {
             Debug.Log("trigger");
             int roundedRandom = (int)Mathf.Round(audioInfluence);

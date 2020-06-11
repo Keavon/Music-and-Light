@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureA:
-        m_Texture: {fileID: 8400000, guid: 907a40eb4b3860b41b442599bc2c8ac0, type: 2}
+        m_Texture: {fileID: 8400000, guid: 34bae8b17f682da48b67ac34e07f2d01, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureB:
@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BlendOverWithA: 1
+    - _BlendOverWithA: 0
     - _BlendOverWithB: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
