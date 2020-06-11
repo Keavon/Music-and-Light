@@ -88,16 +88,16 @@ public class LayerSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W)) {
+        if (Input.GetKeyDown(KeyCode.I)) {
             StartLayer(Directions.North);
         }
-        if (Input.GetKeyDown(KeyCode.A)) {
+        if (Input.GetKeyDown(KeyCode.J)) {
             StartLayer(Directions.West);
         }
-        if (Input.GetKeyDown(KeyCode.S)) {
+        if (Input.GetKeyDown(KeyCode.K)) {
             StartLayer(Directions.South);
         }
-        if (Input.GetKeyDown(KeyCode.D)) {
+        if (Input.GetKeyDown(KeyCode.L)) {
             StartLayer(Directions.East);
         }
     }
